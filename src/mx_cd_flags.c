@@ -50,13 +50,11 @@ static int cd_flag_s(t_map **map, char *newdir) {
             return 0;
         }
         mx_check_s_slash(newdir, map);
-    }
-    else {
+    } else {
         if (check_link_newdir(map, newdir)) {
             fprintf(stderr, "cd: %s: is not a directory.\n", newdir);
             return 0;
-        }
-        else
+        } else
             mx_change_dir(newdir, map, 1);
     }
     return 1;
@@ -79,8 +77,7 @@ void mx_flag_p_full_path(t_map **map, char *newdir) {
         mx_put_pwd(real_path, mx_get_map(map, "OLDPWD"));
         mx_strdel(&path);
         mx_strdel(&real_path);
-    }
-    else
+    } else
         mx_change_dir(newdir, map, 1);
 }
 
@@ -92,7 +89,6 @@ void mx_cd_flags(char *flag, t_map **map, char *newdir) {
     }
     if (strcmp(flag, "-P") == 0) {
         mx_flag_p_slash(newdir, map);
-    }
-    else if (strcmp(flag, "-s") == 0)
+    } else if (strcmp(flag, "-s") == 0)
         cd_flag_s(map, newdir);
 }
