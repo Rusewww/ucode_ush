@@ -1,14 +1,14 @@
 #include "ush.h"
 
 void mx_print_var_list(t_var_list key, int fd) {
-    t_list **var_list = mx_get_var_list(key);
-    t_list *current = *var_list;
-
-    while (current) {
-        dprintf(fd, "%s\n", current->data);
-        if (current->next)
-            current = current->next;
-        else
-            current = NULL;
+    t_list **var = mx_get_var_list(key);
+    t_list *cur = *var;
+    while (cur) {
+        dprintf(fd, "%s\n", cur->data);
+        if (cur->next) {
+            cur = cur->next;
+        } else {
+            cur = NULL;
+        }
     }
 }
