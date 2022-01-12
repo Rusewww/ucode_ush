@@ -9,6 +9,7 @@ LIBMX = libmx
 LBMX = libmx.a
 INC = ush.h
 SRC = mx_ush.c \
+	main.c \
 	mx_exec_fork.c \
 	mx_replace_tilde_tools.c \
 	mx_replace_funcs.c \

@@ -8,13 +8,13 @@ void mx_init(void) {
     if (getenv("HOME") == NULL) {
         struct passwd *pw = getpwuid(getuid());
         char *home = mx_strjoin("HOME=", pw->pw_dir);
-
         mx_putenv(home);
         mx_var_list_insert(SHELL, home);
         mx_strdel(&home);
     }
-    if (getenv("PATH") == NULL)
+    if (getenv("PATH") == NULL) {
         mx_var_list_insert(SHELL, DEFAULT_PATH);
+    }
     mx_init_signals();
     tcgetattr(STDIN_FILENO, mx_get_tty());
     setvbuf(stdout, NULL, _IONBF, 0);
@@ -31,8 +31,9 @@ bool check_stdin(int *exit_code) {
     buff = mx_strnew(ARG_MAX + 1);
     while ((linelen = getline(&buff, &linecap, stdin)) > 0) {
         buff[linelen] = '\0';
-        if (buff[linelen - 1] == '\n')
+        if (buff[linelen - 1] == '\n') {
             buff[linelen - 1] = '\0';
+        }
         mx_handle_command(buff, exit_code);
     }
     mx_strdel(&buff);
@@ -44,41 +45,4 @@ void mx_deinit(void) {
     mx_kill_process();
     t_map **map = mx_get_lenv();
     mx_del_map(map);
-}
-
-static void main_cycle(void) {
-    int result = 0;
-    t_prompt *prompt = malloc(sizeof(t_prompt));
-    extern char **environ;
-    int fd = isatty(1) ? 1 : 2;
-
-    if (!isatty(1) && !isatty(2))
-        fd = open("/dev/null", O_RDONLY);
-    while (result != -1) {
-        mx_get_input(prompt, fd, &result);
-        dprintf(fd, "\r\n");
-        mx_handle_command(prompt->command, &result);
-    }
-    if (fd != 1 && fd != 2)
-        close(fd);
-    mx_d_del_list(&prompt->history_head);
-    free(prompt);
-}
-
-int main(int argc, char **argv) {
-    int exit_code = 0;
-
-    if (argc > 1) {
-        fprintf(stderr, "%s: illegal option -- %s\n", MX_SHELL_NAME, argv[1]);
-        fprintf(stderr, "usage: %s ./ush\n", MX_SHELL_NAME);
-        return 1;
-    }
-    mx_init();
-    if (check_stdin(&exit_code)) {
-        mx_deinit();
-        exit(exit_code);
-    }
-    main_cycle();
-    mx_deinit();
-    return 0;
 }
