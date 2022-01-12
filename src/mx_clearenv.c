@@ -2,18 +2,22 @@
 
 void mx_clearenv(void) {
     extern char **environ;
-    char **vars_to_del = NULL;
-    char *delname = NULL;
+    char **del_var = NULL;
+    char *del_n = NULL;
 
     if (environ[0] != NULL) {
-        vars_to_del = mx_env_copy();
-        for (int i = 0; vars_to_del[i]; i++) {
-            mx_get_name(vars_to_del[i], &delname);
-            unsetenv(delname);
+        del_var = mx_env_copy();
+        int i = 0;
+        while (del_var[i]) {
+            mx_get_name(del_var[i], &del_n);
+            unsetenv(del_n);
+            i++;
         }
-        if (vars_to_del[0])
-            mx_del_strarr(&vars_to_del);
-        if (delname != NULL)
-            mx_strdel(&delname);
+        if (del_var[0]) {
+            mx_del_strarr(&del_var);
+        }
+        if (del_n != NULL) {
+            mx_strdel(&del_n);
+        }
     }
 }
