@@ -1,30 +1,30 @@
 #include "ush.h"
 
-static void skip_single_quotes(char *cmnd, int *i) {
-    if (cmnd[*i] == MX_S_QUOTES && !mx_isescape_char(cmnd, *i)) {
+static void skip_single_quotes(char *command, unsigned int *i) {
+    if (command[*i] == MX_S_QUOTES && !mx_isescape_char(command, *i)) {
         (*i)++;
-        for (; cmnd[*i]; (*i)++;) {
-            if (cmnd[*i] == MX_S_QUOTES) {
+        while (command[*i]) {
+            if (command[*i] == MX_S_QUOTES) {
                 break;
             }
+            (*i)++;
         }
     }
 }
 
-void mx_skip_quotes(char *cmnd, int *i, char char) {
-
-    if (char == MX_S_QUOTES) {
-        skip_single_quotes(cmnd, i);
+void mx_skip_quotes(char *command, unsigned int *i, char c) {
+    if (c == MX_S_QUOTES) {
+        skip_single_quotes(command, i);
         return;
     }
-
-    if (cmnd[*i] == char && !mx_isescape_char(cmnd, *i)) {
+    if (command[*i] == c && !mx_isescape_char(command, *i)) {
         (*i)++;
-        for (; cmnd[*i]; (*i)++) {
-            if (cmnd[*i] == char
-            && !mx_isescape_char(cmnd, *i)) {
+        while (command[*i]) {
+            if (command[*i] == c
+                && !mx_isescape_char(command, *i)) {
                 break;
             }
+            (*i)++;
         }
     }
 }
