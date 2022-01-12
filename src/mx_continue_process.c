@@ -1,6 +1,6 @@
 #include "ush.h"
 
-void mx_continue_process(t_process *process, t_list **all_processes, int fd) {
+void mx_continue_process(t_process *process, t_list **processes, int fd) {
     if (kill(-process->pid, SIGCONT)) {
         fprintf(stderr, "fg: %s\n", strerror(errno));
     }
@@ -8,9 +8,8 @@ void mx_continue_process(t_process *process, t_list **all_processes, int fd) {
             process->cmd);
     if (waitpid(-process->gpid, &process->status, WUNTRACED) != -1) {
         if (!MX_WIFSTOPPED(process->status)) {
-            mx_del_node_list(all_processes, &process);
-        }
-        else if (MX_WIFSTOPPED(process->status)) {
+            mx_del_node_list(processes, &process);
+        } else if (MX_WIFSTOPPED(process->status)) {
             printf("[%d]    %d suspended  %s\n", process->pos, process->pid,
                    process->cmd);
         }
