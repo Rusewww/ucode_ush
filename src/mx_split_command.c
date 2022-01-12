@@ -12,7 +12,7 @@ t_list *mx_split_command(char *command) {
             continue;
         }
         if (!command[i + 1] || (isspace(command[i + 1])
-            && !mx_isescape_char(command, i + 1))) {
+                                && !mx_isescape_char(command, i + 1))) {
             mx_push_back(&result, strndup(command + save, i - save + 1));
             save = i + 1;
         }
