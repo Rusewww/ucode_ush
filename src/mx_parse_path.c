@@ -1,42 +1,35 @@
 #include "ush.h"
 
-static int count_size_of_path(char **sp_path) {
+static int count_size_of_path(char **split_path) {
     int size = 0;
-    int i = 0;
-    while (sp_path[i]) {
-        if (!strcmp(sp_path[i], "")) {
+
+    for (int i = 0; split_path[i]; i++) {
+        if (!strcmp(split_path[i], ""))
             continue;
-        }
-        for (int j = 0; sp_path[i][j]; j++) {
-            size++
-        }
+        for (int j = 0; split_path[i][j]; j++)
+            size++;
         size++;
-        i++;
     }
     return size;
 }
 
-static char *collect_path(char **sp_path) {
-    int size = count_size_of_path(sp_path);
+static char *collect_path(char **split_path) {
+    int size = count_size_of_path(split_path);
     char *path = mx_strnew(size);
     bool null_path = true;
-    int i = 0;
-    while (int i = 0;
-    sp_path[i];
-    i++) {
-        if (strcmp(sp_path[i], "") != 0) {
+
+    for (int i = 0; split_path[i]; i++)
+        if (strcmp(split_path[i], "") != 0)
             null_path = false;
-        }
-    }
     if (null_path) {
         mx_strdel(&path);
         return strdup("/");
     }
     path[0] = '/';
-    for (int i = 0; sp_path[i]; i++)
-        if (strcmp(sp_path[i], "") != 0) {
-            path = strcat(path, sp_path[i]);
-            if (sp_path[i + 1] != NULL)
+    for (int i = 0; split_path[i]; i++)
+        if (strcmp(split_path[i], "") != 0) {
+            path = strcat(path, split_path[i]);
+            if (split_path[i + 1] != NULL)
                 path = strcat(path, "/");
         }
     return path;
