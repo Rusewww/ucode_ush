@@ -35,7 +35,7 @@ static char *replace_octal(char *arg) {
 
     while ((ind = mx_get_substr_index(arg, "\\0")) >= 0) {
         strncat(res, arg, ind);
-        for (; arg[++ind] >= '0' && arg[ind] <= '7' && arg[ind]; num_size++;);
+        for (; arg[++ind] >= '0' && arg[ind] <= '7' && arg[ind]; num_size++);
         octal = strndup(arg + ind - num_size, num_size);
         res[strlen(res)] = (char) strtol(octal, NULL, 8);
         mx_strdel(&octal);
