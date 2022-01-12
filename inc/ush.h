@@ -313,8 +313,6 @@ int mx_get_process_id_by_pid(pid_t pid);
 
 pid_t mx_get_process_pid_by_id(int id);
 
-int mx_bye(char **args);
-
 int mx_chdir(char **split, int fd);
 
 int mx_color(char **args);
