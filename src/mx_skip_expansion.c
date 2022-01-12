@@ -6,7 +6,7 @@ void mx_skip_expansion(char *command, unsigned int *i) {
         if (command[*i + 1] == '(' && !mx_isescape_char(command, *i)) {
             *i += 2;
             brawl_stars++;
-            for (; command[*i]; (*i)++;) {
+            for (; command[*i]; (*i)++) {
                 if (command[*i] == '(' && !mx_isescape_char(command, *i)) {
                     brawl_stars++;
                 }
