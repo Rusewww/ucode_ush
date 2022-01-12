@@ -1,18 +1,19 @@
 #include "ush.h"
 
-bool mx_check_semicolons(char **commands, int *code) {
+bool mx_check_semicolons(char **cmnd, int *code) {
     unsigned int index = 0;
     char *str = NULL;
 
-    while (commands[index]) {
-        str = mx_strtrim(commands[index]);
+    while (cmnd[index]) {
+        str = mx_strtrim(cmnd[index]);
         if (!strlen(str)) {
             *code = 1;
             fprintf(stderr, "%s: parse error near \'", MX_SHELL_NAME);
-            if (!index)
+            if (!index) {
                 fprintf(stderr, ";\'");
-            else
+            } else {
                 fprintf(stderr, ";;\'");
+            }
             fprintf(stderr, "\n");
             mx_strdel(&str);
             return false;
