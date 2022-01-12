@@ -1,11 +1,10 @@
 #include "ush.h"
 
-t_list *mx_handle_substitution(t_list *arguments) {
-    t_list *result = NULL;
+t_list *mx_handle_substitution(t_list *arg) {
+    t_list *res = NULL;
 
-    while (arguments) {
-        mx_push_back(&result, strdup(arguments->data));
-        arguments = arguments->next;
+    for (; arg; arg = arg->next;) {
+        mx_push_back(&res, strdup(arg->data));
     }
-    return result;
+    return res;
 }
