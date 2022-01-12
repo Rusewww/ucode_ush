@@ -10,13 +10,14 @@ static bool isvalid(t_prompt *prompt) {
 }
 
 static void get_down_history(t_prompt *prompt) {
-    if (prompt->tmp_history)
-        if (prompt->tmp_history->prev)
+    if (prompt->tmp_history) {
+        if (prompt->tmp_history->prev) {
             prompt->tmp_history = prompt->tmp_history->prev;
+        }
+    }
     while (prompt->tmp_history) {
         if (isvalid(prompt)) {
-            mx_rcmd(prompt->command, prompt->tmp_history->data,
-                    sizeof(prompt->command), &prompt->index);
+            mx_rcmd(prompt->command, prompt->tmp_history->data, sizeof(prompt->command), &prompt->index);
             break;
         }
         if (!prompt->tmp_history->prev) {
@@ -26,8 +27,7 @@ static void get_down_history(t_prompt *prompt) {
         prompt->tmp_history = prompt->tmp_history->prev;
     }
     if (prompt->end) {
-        mx_rcmd(prompt->command, prompt->tmp_command,
-                sizeof(prompt->command), &prompt->index);
+        mx_rcmd(prompt->command, prompt->tmp_command, sizeof(prompt->command), &prompt->index);
     }
 }
 
@@ -39,13 +39,13 @@ static void get_up_history(t_prompt *prompt) {
     }
     while (prompt->tmp_history) {
         if (isvalid(prompt)) {
-            mx_rcmd(prompt->command, prompt->tmp_history->data,
-                    sizeof(prompt->command), &prompt->index);
+            mx_rcmd(prompt->command, prompt->tmp_history->data, sizeof(prompt->command), &prompt->index);
             prompt->end = false;
             break;
         }
-        if (!prompt->tmp_history->next)
+        if (!prompt->tmp_history->next) {
             break;
+        }
         prompt->tmp_history = prompt->tmp_history->next;
     }
 }

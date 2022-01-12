@@ -1,25 +1,24 @@
 #include "ush.h"
 
-static void backspace_char(t_prompt *prompt, unsigned int i_d) {
-    if (!prompt->cursor_index || !prompt->index)
+static void backspace_char(t_prompt *prompt, unsigned int d) {
+    if (!prompt->cursor_index || !prompt->index) {
         return;
-    memmove(prompt->command + i_d, prompt->command + i_d + 1,
-            strlen(prompt->command) - i_d);
+    }
+    memmove(prompt->command + d, prompt->command + d + 1, strlen(prompt->command) - d);
     prompt->index--;
     prompt->cursor_index--;
 }
 
-static void delete_char(t_prompt *prompt, unsigned int i_d) {
-    if (!prompt->index || i_d == prompt->index)
+static void delete_char(t_prompt *prompt, unsigned int d) {
+    if (!prompt->index || d == prompt->index) {
         return;
-    memmove(prompt->command + i_d, prompt->command + i_d + 1,
-            strlen(prompt->command) - i_d);
+    }
+    memmove(prompt->command + d, prompt->command + d + 1, strlen(prompt->command) - d);
     prompt->index--;
 }
 
-static void insert_char(t_prompt *prompt, unsigned int c_i) {
-    memmove(prompt->command + c_i + 1, prompt->command + c_i,
-            strlen(prompt->command + c_i));
+static void insert_char(t_prompt *prompt, unsigned int c) {
+    memmove(prompt->command + c + 1, prompt->command + c, strlen(prompt->command + c));
     prompt->command[prompt->cursor_index] = prompt->buff[0];
     prompt->index++;
     prompt->cursor_index++;
@@ -42,7 +41,8 @@ void mx_handle_print_char(t_prompt *prompt) {
         delete_char(prompt, prompt->cursor_index);
         return;
     }
-    if (!isprint(prompt->buff[0]) || strlen(prompt->buff) != 1)
+    if (!isprint(prompt->buff[0]) || strlen(prompt->buff) != 1) {
         return;
+    }
     insert_char(prompt, prompt->cursor_index);
 }
