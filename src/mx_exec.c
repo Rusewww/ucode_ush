@@ -30,7 +30,7 @@ static void add_process(t_process *process) {
 
     tcsetpgrp(STDIN_FILENO, getpgrp());
     mx_enable_canon();
-    for (; tmp; tmp = tmp->next;) {
+    for (; tmp; tmp = tmp->next) {
         if (!tmp->next) {
             break;
         }
