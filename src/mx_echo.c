@@ -1,89 +1,97 @@
 #include "ush.h"
 
 static unsigned int set_flags(bool *is_nl, bool *is_e, char **argv) {
-    unsigned int index = 0;
+    unsigned int ind = 0;
 
-    while (argv[index]) {
-        if (mx_match(argv[index], "^-[nEe]+$")) {
-            for (unsigned int i = 0; i < strlen(argv[index]); i++) {
-                if (argv[index][i] == 'E')
+    while (argv[ind]) {
+        if (mx_match(argv[ind], "^-[nEe]+$")) {
+            unsigned int i = 0;
+            while (i < strlen(argv[ind])) {
+                if (argv[ind][i] == 'E') {
                     *is_e = false;
-                if (argv[index][i] == 'e')
+                }
+                if (argv[ind][i] == 'e') {
                     *is_e = true;
-                if (argv[index][i] == 'n')
+                }
+                if (argv[ind][i] == 'n') {
                     *is_nl = false;
+                }
+                i++;
             }
-        }
-        else
+        } else {
             break;
-        index++;
+        }
+        ind++;
     }
-    return index;
+    return ind;
 }
 
 static char *replace_octal(char *arg) {
-    char *result = mx_strnew(strlen(arg));
-    int index = 0;
+    char *res = mx_strnew(strlen(arg));
+    char *octal = NULL;
+    char *tmp = arg;
+    int ind = 0;
     int num_size = 0;
-    char *octal_num = NULL;
-    char *save = arg;
 
-    while ((index = mx_get_substr_index(arg, "\\0")) >= 0) {
-        strncat(result, arg, index);
-        while (arg[++index] >= '0' && arg[index] <= '7' && arg[index])
-            num_size++;
-        octal_num = strndup(arg + index - num_size, num_size);
-        result[strlen(result)] = (char)strtol(octal_num, NULL, 8);
-        mx_strdel(&octal_num);
-        arg += index;
+    while ((ind = mx_get_substr_index(arg, "\\0")) >= 0) {
+        strncat(res, arg, ind);
+        for (; arg[++ind] >= '0' && arg[ind] <= '7' && arg[ind]; num_size++);
+        octal = strndup(arg + ind - num_size, num_size);
+        res[strlen(res)] = (char) strtol(octal, NULL, 8);
+        mx_strdel(&octal);
+        arg += ind;
         num_size = 0;
     }
-    strcat(result, arg);
-    mx_strdel(&save);
-    return result;
+    strcat(res, arg);
+    mx_strdel(&tmp);
+    return res;
 }
 
-static char *replace_escape(char *arg, bool *is_nl) {
-    int index = 0;
-    char *result = mx_strnew(ARG_MAX);
+static char *replace_escape(char *arg, bool *null) {
+    int ind = 0;
+    char *res = mx_strnew(ARG_MAX);
 
-    if ((index = mx_get_substr_index(arg, "\\c")) >= 0) {
-        strncpy(result, arg, index);
-        *is_nl = false;
+    if ((ind = mx_get_substr_index(arg, "\\c")) >= 0) {
+        strncpy(res, arg, ind);
+        *null = false;
+    } else {
+        strcpy(res, arg);
     }
-    else
-        strcpy(result, arg);
-    result = mx_replace_escape(result, "\\a", '\x07', true);
-    result = mx_replace_escape(result, "\\b", '\x08', true);
-    result = mx_replace_escape(result, "\\f", '\x0c', true);
-    result = mx_replace_escape(result, "\\n", '\x0a', true);
-    result = mx_replace_escape(result, "\\r", '\x0d', true);
-    result = mx_replace_escape(result, "\\t", '\x09', true);
-    result = mx_replace_escape(result, "\\v", '\x0b', true);
-    result = mx_replace_escape(result, "\\\\", '\\', true);
-    result = replace_octal(result);
-    return result;
+    res = mx_replace_escape(res, "\\a", '\x07', true);
+    res = mx_replace_escape(res, "\\b", '\x08', true);
+    res = mx_replace_escape(res, "\\f", '\x0c', true);
+    res = mx_replace_escape(res, "\\n", '\x0a', true);
+    res = mx_replace_escape(res, "\\r", '\x0d', true);
+    res = mx_replace_escape(res, "\\t", '\x09', true);
+    res = mx_replace_escape(res, "\\v", '\x0b', true);
+    res = mx_replace_escape(res, "\\\\", '\\', true);
+    res = replace_octal(res);
+    return res;
 }
 
-int mx_echo(char **args, int fd) {
-    bool is_nl = true;
-    bool is_e = false;
-    unsigned int index = 0;
+int mx_echo(char **args, int dr) {
+    bool null = true;
+    bool e = false;
+    unsigned int ind = 0;
     char *output = NULL;
 
-    index = set_flags(&is_nl, &is_e, args);
-    while (args[index]) {
-        if (is_e)
-            output = replace_escape(args[index], &is_nl);
-        else
-            output = strdup(args[index]);
-        dprintf(fd, "%s", output);
+    ind = set_flags(&null, &e, args);
+    while (args[ind]) {
+        if (e) {
+            output = replace_escape(args[ind], &null);
+        } else {
+            output = strdup(args[ind]);
+        }
+        dprintf(dr, "%s", output);
         mx_strdel(&output);
-        index++;
-        if (args[index])
-            dprintf(fd, " ");
+        ind++;
+        if (args[ind]) {
+            dprintf(dr, " ");
+        }
     }
-    if (is_nl)
-        dprintf(fd, "\n");
+
+    if (null) {
+        dprintf(dr, "\n");
+    }
     return 0;
 }
