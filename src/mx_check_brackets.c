@@ -1,24 +1,24 @@
 #include "ush.h"
 
-bool mx_check_brackets(char *c) {
-    unsigned int len = strlen(c);
-    int stack[len];
-    int top = -1;
+bool mx_check_brackets(char *chr) {
+    unsigned int length = strlen(chr);
+    int stack[length];
+    int up = -1;
 
-    for (unsigned int i = 0; i < len; i++) {
-        mx_skip_quotes(c, &i, MX_GRAVE_ACCENT);
-        if ((c[i] == '(' && !mx_isescape_char(c, i))
-            || (c[i] == '{' && !mx_isescape_char(c, i))
-            || (c[i] == ')' && !mx_isescape_char(c, i))
-            || (c[i] == '}' && !mx_isescape_char(c, i))) {
-            top++;
-            stack[top] = c[i];
+    for (unsigned int i = 0; i < length; i++) {
+        mx_skip_quotes(chr, &i, MX_GRAVE_ACCENT);
+        if ((chr[i] == '(' && !mx_isescape_char(chr, i))
+            || (chr[i] == '{' && !mx_isescape_char(chr, i))
+            || (chr[i] == ')' && !mx_isescape_char(chr, i))
+            || (chr[i] == '}' && !mx_isescape_char(chr, i))) {
+            up++;
+            stack[up] = chr[i];
         }
-        if ((stack[top] == ')' && (top - 1 >= 0 && stack[top - 1] == '('))
-            || (stack[top] == '}' && (top - 1 >= 0
-                                      && stack[top - 1] == '{'))) {
-            top = top - 2;
+        if ((stack[up] == ')' && (up - 1 >= 0 && stack[up - 1] == '('))
+            || (stack[up] == '}' && (up - 1 >= 0
+                                     && stack[up - 1] == '{'))) {
+            up = up - 2;
         }
     }
-    return top == -1;
+    return up == -1;
 }
