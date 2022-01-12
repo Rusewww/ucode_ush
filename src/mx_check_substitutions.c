@@ -12,7 +12,7 @@ bool mx_check_substitutions(char *cmnd) {
         if (cmnd[i] == MX_GRAVE_ACCENT && !mx_isescape_char(cmnd, i)) {
             g_quotes = !g_quotes;
         }
-        i++
+        i++;
     }
     return !g_quotes;
 }
