@@ -12,11 +12,9 @@ static char *argv_to_str(char **argv) {
     return strdup(str);
 }
 
-static bool run_process(t_process *process,
-                        char *filename, char **argv, char **env) {
+static bool run_process(t_process *process, char *filename, char **argv, char **env) {
     process->cmd = argv_to_str(argv);
-    process->status = posix_spawn(&process->pid, filename, &process->actions,
-                                  &process->attrs, argv, env);
+    process->status = posix_spawn(&process->pid, filename, &process->actions, &process->attrs, argv, env);
     process->gpid = getpgid(process->pid);
     tcsetpgrp(STDIN_FILENO, process->gpid);
     kill(-process->pid, SIGCONT);
@@ -32,37 +30,35 @@ static void add_process(t_process *process) {
 
     tcsetpgrp(STDIN_FILENO, getpgrp());
     mx_enable_canon();
-    while (tmp) {
+    for (; tmp; tmp = tmp->next;) {
         if (!tmp->next) {
             break;
         }
-        tmp = tmp->next;
     }
     mx_push_back(list, process);
-    if (tmp)
-        process->pos = ((t_process*)tmp->data)->pos + 1;
-    else
+    if (tmp) {
+        process->pos = ((t_process *) tmp->data)->pos + 1;
+    } else {
         process->pos = 1;
-    printf("[%d]    %d suspended  %s\n", process->pos, process->pid, 
-           process->cmd);
+    }
+    printf("[%d]    %d suspended  %s\n", process->pos, process->pid, process->cmd);
 }
 
-int mx_exec(t_process *process, char *filename, char **argv, char **env) {
-    int retval = 0;
+int mx_exec(t_process *process, char *name, char **argv, char **env) {
+    int rval = 0;
 
     mx_disable_canon();
-    if (!run_process(process, filename, argv, env)) {
-        fprintf(stderr, "%s: %s: %s\n", MX_SHELL_NAME, filename,
-                strerror(process->status));
-        retval = 126;
-    }
-    else if (waitpid(-process->pid, &process->status, WUNTRACED) != -1) {
-        if (MX_WIFSTOPPED(process->status))
+    if (!run_process(process, name, argv, env)) {
+        fprintf(stderr, "%s: %s: %s\n", MX_SHELL_NAME, name, strerror(process->status));
+        rval = 126;
+    } else if (waitpid(-process->pid, &process->status, WUNTRACED) != -1) {
+        if (MX_WIFSTOPPED(process->status)) {
             add_process(process);
+        }
     }
     if (!MX_WIFSTOPPED(process->status)) {
         tcsetpgrp(STDIN_FILENO, getpgrp());
         mx_enable_canon();
     }
-    return retval != 126 ? MX_WEXITSTATUS(process->status) : retval;
+    return rval != 126 ? MX_WEXITSTATUS(process->status) : rval;
 }
