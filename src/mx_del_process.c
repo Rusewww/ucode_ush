@@ -13,10 +13,11 @@ void mx_del_process(t_process **process) {
 void mx_kill_process(void) {
     t_list **processes = mx_get_list_procs();
     t_process *tmp = NULL;
-
-    for (t_list *cur = *processes; cur; cur = cur->next) {
-        tmp = (t_process*)cur->data;
+    t_list *cur = *processes;
+    while (cur) {
+        tmp = (t_process *) cur->data;
         kill(-tmp->pid, SIGKILL);
         mx_del_node_list(processes, &tmp);
+        cur = cur->next;
     }
 }
