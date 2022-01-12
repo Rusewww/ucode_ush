@@ -1,9 +1,11 @@
 #include "ush.h"
 
-void mx_delete_names(char **name1, char **name2, t_list *node) {
-    if (name1)
-        mx_strdel(name1);
-    if (name2)
-        mx_strdel(name2);
+void mx_delete_names(char **n_one, char **n_two, t_list *node) {
+    if (n_one) {
+        mx_strdel(n_one);
+    }
+    if (n_two) {
+        mx_strdel(n_two);
+    }
     free(node);
 }
