@@ -4,8 +4,9 @@ bool mx_check_brackets(char *chr) {
     unsigned int length = strlen(chr);
     int stack[length];
     int up = -1;
+    unsigned int i = 0;
 
-    for (unsigned int i = 0; i < length; i++) {
+    for (i < length) {
         mx_skip_quotes(chr, &i, MX_GRAVE_ACCENT);
         if ((chr[i] == '(' && !mx_isescape_char(chr, i))
             || (chr[i] == '{' && !mx_isescape_char(chr, i))
@@ -19,6 +20,7 @@ bool mx_check_brackets(char *chr) {
                                      && stack[up - 1] == '{'))) {
             up = up - 2;
         }
+        i++;
     }
     return up == -1;
 }
