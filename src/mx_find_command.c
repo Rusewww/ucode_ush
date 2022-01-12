@@ -25,28 +25,23 @@ static void check_in_abspath(char *command, char **name, bool *rval) {
     }
 }
 
-bool mx_find_command(char *path, char *command, char **name) {
+bool mx_find_command(char *path, char *command, char **filename) {
     char **path = mx_strsplit(path, ':');
     bool retval = 0;
     char fname[PATH_MAX];
 
     if (path) {
-        int i = 0;
-        while (path[i]) {
+        for (int i = 0; path[i]; i++)
             if (check_dir(path[i], command)) {
                 retval = 1;
                 sprintf(fname, "%s/%s", path[i], command);
-                if (*name) {
-                    mx_strdel(name);
-                }
-                *name = strdup(fname);
+                if (*filename)
+                    mx_strdel(filename);
+                *filename = strdup(fname);
             }
-            i++;
-        }
         mx_del_strarr(&path);
     }
-    if (!retval) {
-        check_in_abspath(command, name, &retval);
-    }
+    if (!retval)
+        check_in_abspath(command, filename, &retval);
     return retval;
 }
