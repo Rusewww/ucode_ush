@@ -1,83 +1,83 @@
 #include "ush.h"
 
-static void append(char **result, char *buf) {
-    char *tmp_str = mx_strjoin(*result, buf);
-
-    mx_strdel(result);
-    *result = mx_strdup(tmp_str);
-    mx_strdel(&tmp_str);
-}
 
 char *mx_get_output_fd(int fd) {
     size_t bytes = 0;
-    char *output = NULL;
-    char buf[128];
-
-    while ((bytes = read(fd, buf, sizeof(buf) - 1)) > 0) {
-        buf[bytes] = '\0';
-        append(&output, buf);
+    char *out = NULL;
+    char buff[128];
+    while ((bytes = read(fd, buff, sizeof(buff) - 1)) > 0) {
+        buff[bytes] = '\0';
+        char *tmp = mx_strjoin(*out, buff);
+        mx_strdel(out);
+        *out = mx_strdup(tmp);
+        mx_strdel(&tmp);
     }
-    return output;
+    return out;
 }
 
-static char *get_output(char **arguments, unsigned int len) {
+static char *get_output(char **arg, unsigned int len) {
     int fds[2];
-    char *output = NULL;
+    char *out = NULL;
     char *save = NULL;
-
     pipe(fds);
-    mx_exec_fork(arguments, fds[1]);
+    mx_exec_fork(arg, fds[1]);
     close(fds[1]);
-    output = mx_get_output_fd(fds[0]);
+    out = mx_get_output_fd(fds[0]);
     close(fds[0]);
-    if (output) {
-        save = output;
-        output = mx_strtrim(output);
+    if (out) {
+        save = out;
+        out = mx_strtrim(out);
         mx_strdel(&save);
-        if (strlen(output) + len > ARG_MAX - 1)
+        if (strlen(out) + len > ARG_MAX - 1) {
             return NULL;
+        }
     }
-    return output;
+    return out;
 }
 
-static void parse_commands(char **commands, char *sub, char *arg, int *code) {
-    char **arguments = NULL;
-    char *output = NULL;
-
-    for (unsigned int i = 0; commands[i]; i++) {
-        if (!(arguments = mx_interpretate(commands[i], code))) {
-            mx_del_strarr(&commands);
+static void parse_commands(char **cmnd, char *sub, char *arg, int *code) {
+    char **arg = NULL;
+    char *out = NULL;
+    unsigned int i = 0;
+    while (cmnd[i]) {
+        if (!(arg = mx_interpretate(cmnd[i], code))) {
+            mx_del_strarr(&cmnd);
             mx_strdel(&sub);
             continue;
         }
-        output = get_output(arguments, strlen(arg));
-        if (output) {
-            strcat(arg, output);
-            mx_strdel(&output);
+        out = get_output(arg, strlen(arg));
+        if (out) {
+            strcat(arg, out);
+            mx_strdel(&out);
         }
-        mx_del_strarr(&arguments);
+        mx_del_strarr(&arg);
+        i++;
     }
 }
 
 bool mx_get_sub(char *arg, char *sub, int *code) {
-    char **commands = NULL;
-    bool sub_type = true;
-    char *sub_trimmed = NULL;
+    char **cmnd = NULL;
+    bool sub_t = true;
+    char *sub_tr = NULL;
 
-    if (sub[0] == '$')
-        sub_type = false;
-    if (mx_remove_subchar(sub)) {
-        sub_trimmed = mx_strtrim(sub);
-        if (mx_check_trimmed_str(sub_trimmed, sub))
-            return true;
-        commands = mx_parse_command(sub, code);
+    if (sub[0] == '$') {
+        sub_t = false;
     }
-    if (*code || !commands)
+    if (mx_remove_subchar(sub)) {
+        sub_tr = mx_strtrim(sub);
+        if (mx_check_trimmed_str(sub_tr, sub)) {
+            return true;
+        }
+        cmnd = mx_parse_command(sub, code);
+    }
+    if (*code || !cmnd) {
         return false;
-    if (sub_type)
-        mx_replace_sub_escapes(commands);
-    parse_commands(commands, sub, arg, code);
+    }
+    if (sub_t) {
+        mx_replace_sub_escapes(cmnd);
+    }
+    parse_commands(cmnd, sub, arg, code);
     mx_strdel(&sub);
-    mx_del_strarr(&commands);
+    mx_del_strarr(&cmnd);
     return true;
 }
