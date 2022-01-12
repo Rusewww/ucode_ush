@@ -15,15 +15,15 @@ static void env_deinit(char ***env, char **path, char **name) {
 }
 
 static int exec_process(char *filename, char **argv, int fd) {
-    extern char **envi;
+    extern char **environ;
     t_process *process = mx_create_process(fd);
-    int rval = mx_env_exec(process, filename, argv, envi);
+    int rval = mx_env_exec(process, filename, argv, environ);
     mx_del_process(&process);
     return rval;
 }
 
 int mx_env(char **argv, int fd) {
-    char **envy = mx_env_copy();
+    char **env = mx_env_copy();
     char *name = NULL;
     char *path = NULL;
     int rval = 0;
@@ -40,7 +40,6 @@ int mx_env(char **argv, int fd) {
             rval = 127;
         }
     }
-
-    env_deinit(&envy, &path, &name);
+    env_deinit(&env, &path, &name);
     return rval;
 }
