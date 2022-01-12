@@ -31,17 +31,22 @@ bool mx_find_command(char *path, char *command, char **filename) {
     char fname[PATH_MAX];
 
     if (paths) {
-        for (int i = 0; paths[i]; i++)
+        int i = 0;
+        while (paths[i]) {
             if (check_dir(paths[i], command)) {
                 retval = 1;
                 sprintf(fname, "%s/%s", paths[i], command);
-                if (*filename)
+                if (*filename) {
                     mx_strdel(filename);
+                }
                 *filename = strdup(fname);
             }
+            i++;
+        }
         mx_del_strarr(&paths);
     }
-    if (!retval)
+    if (!retval) {
         check_in_abspath(command, filename, &retval);
+    }
     return retval;
 }
