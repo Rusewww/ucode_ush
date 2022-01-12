@@ -13,11 +13,13 @@ static char **get_sorted_environ(void) {
     extern char **environ;
     int len = 0;
 
-    if (*environ == NULL)
+    if (*environ == NULL) {
         mx_putenv("SHLVL=0");
-    while (environ[len])
+    }
+    while (environ[len]) {
         len++;
-    sorted_environ = malloc((len + 1) * sizeof(char*));
+    }
+    sorted_environ = malloc((len + 1) * sizeof(char *));
     copy_environ(sorted_environ, environ);
     mx_bubble_sort(sorted_environ, len);
     return sorted_environ;
