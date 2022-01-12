@@ -323,6 +323,10 @@ int mx_jobs(char **args, int fd);
 
 int mx_exit(char **args);
 
+int mx_true(void);
+
+int mx_false(void);
+
 int mx_echo(char **args, int fd);
 
 int mx_unset(char **args);
@@ -342,3 +346,5 @@ char **mx_source(char *str);
 int mx_fg(char **args, int fd);
 
 bool mx_check_dir_exists(char *dir);
+
+int mx_set(char **argv, int fd);
