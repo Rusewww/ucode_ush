@@ -79,7 +79,7 @@ int mx_fg(char **args, int fd) {
     t_list **all = mx_get_list_procs();
 
     if (!check_args(args)) {
-        return 1
+        return 1;
     }
     process = get_process(args[0]);
     if (process) {
