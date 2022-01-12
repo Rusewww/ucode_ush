@@ -16,16 +16,13 @@ static int exec_builtin2(char *command, char **argv, int fd) {
     if (!strcmp(command, "fg")) {
         return mx_fg(&argv[1], fd);
     }
-    if (!strcmp(command, "jobs")) {
-        return mx_jobs(&argv[1], fd);
-    }
-    if (!strcmp(command, "set")) {
+    if (!strcmp(command, "set")) {//
         return mx_set(&argv[1], fd);
     }
-    if (!strcmp(command, "chdir")) {
+    if (!strcmp(command, "chdir")) {//
         return mx_chdir(&argv[1], fd);
     }
-    if (!strcmp(command, "bye")) {
+    if (!strcmp(command, "bye")) {//
         return mx_bye(&argv[1]);
     }
     return 1;
@@ -44,10 +41,10 @@ static int exec_builtin1(char *command, char **argv, int fd) {
     if (!strcmp(command, "color")) {
         return mx_color(&argv[1]);
     }
-    if (!strcmp(command, "false")) {
+    if (!strcmp(command, "false")) { //
         return mx_false();
     }
-    if (!strcmp(command, "true")) {
+    if (!strcmp(command, "true")) { //
         return mx_true();
     }
     if (!strcmp(command, "exit")) {
