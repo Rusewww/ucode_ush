@@ -7,17 +7,22 @@ static void clear_data(char **s2, char ***a_s1, char ***a_s2) {
 }
 
 void mx_replace_sub_escapes(char **commands) {
-    for (unsigned int i = 0; commands[i]; i++) {
-        commands[i] = mx_replace_escape(commands[i], "\\`", MX_GRAVE_ACCENT, true);
-        commands[i] = mx_replace_escape(commands[i], "\\\\", '\\', true);
+    unsigned int i = 0;
+
+    while (commands[i]) {
+        commands[i] = mx_replace_escape(commands[i], "\\`",
+                                        MX_GRAVE_ACCENT, true);
+        commands[i] = mx_replace_escape(commands[i], "\\\\",  '\\', true);
+        i++;
     }
 }
 
-bool mx_check_user(char *username) {
+bool mx_check_user(char *user_name) {
     DIR *dir = opendir("/Users/");
     struct dirent *entry;
+
     while ((entry = readdir(dir))) {
-        if (!strcmp(entry->d_name, username)) {
+        if (!strcmp(entry->d_name, user_name)) {
             closedir(dir);
             return true;
         }
@@ -27,25 +32,24 @@ bool mx_check_user(char *username) {
 }
 
 char *mx_check_user_file(char *tmp_name) {
-    char *pasfile = mx_file_to_str("/etc/passwd");
-    char **lines = mx_strsplit(pasfile, '\n');
+    char *pass_file = mx_file_to_str("/etc/passwd");
+    char **lines = mx_strsplit(pass_file, '\n');
     char **data = NULL;
-    char *res = NULL;
-    unsigned int i = 0;
-    while (lines[i]) {
+    char *result = NULL;
+
+    for (unsigned int i = 0; lines[i]; i++) {
         if (lines[i][0] != '#') {
             data = mx_strsplit(lines[i], ':');
             if (!strcmp(data[0], tmp_name)) {
-                res = strdup(data[5]);
-                clear_data(&pasfile, &data, &lines);
-                return res;
+                result = strdup(data[5]);
+                clear_data(&pass_file, &data, &lines);
+                return result;
             }
             mx_del_strarr(&data);
         }
-        i++;
     }
     mx_del_strarr(&lines);
-    mx_strdel(&pasfile);
+    mx_strdel(&pass_file);
     return NULL;
 }
 
