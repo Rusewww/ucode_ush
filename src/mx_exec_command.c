@@ -22,9 +22,6 @@ static int exec_builtin2(char *command, char **argv, int fd) {
     if (!strcmp(command, "chdir")) {//
         return mx_chdir(&argv[1], fd);
     }
-    if (!strcmp(command, "bye")) {//
-        return mx_bye(&argv[1]);
-    }
     return 1;
 }
 
