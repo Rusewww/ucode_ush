@@ -1,36 +1,40 @@
 #include "ush.h"
 
-static void get_names(char *var_one, char **name_one, char *var_two, char **name_two) {
-    mx_get_name(var_one, name_one);
-    mx_get_name(var_two, name_two);
-    if (!strcmp(*name_two, "OLDPWD")) {
+static void get_names(char *var1, char **name1, char *var2, char **name2) {
+    mx_get_name(var1, name1);
+    mx_get_name(var2, name2);
+    if (!strcmp(*name2, "OLDPWD")) {
         t_map **map = mx_get_lenv();
-        mx_put_map(map, "OLDPWD", mx_get_var_info(var_two, 1));
+
+        mx_put_map(map, "OLDPWD", mx_get_var_info(var2, 1));
     }
 }
 
-static void change_var_value(t_list **list, t_list *node, char **name_one, char **name_two) {
+static void change_var_value(t_list **list, t_list *node,
+                             char **name1, char **name2) {
     mx_var_list_replace_var(list, node);
-    mx_delete_names(name_one, name_two, node);
+    mx_delete_names(name1, name2, node);
 }
 
 void mx_var_list_insert(t_var_list key, char *arg) {
     t_list **list = mx_get_var_list(key);
     t_list *node = mx_create_node(strdup(arg));
-    char *a_name = NULL;
-    char *v_name = NULL;
+    char *arg_name = NULL;
+    char *var_name = NULL;
+
     if (*list) {
-        get_names((*list)->data, &v_name, arg, &a_name);
-        if (strcmp(v_name, a_name) > 0) {
-            mx_var_list_push_front(&node, &list, &a_name, &v_name);
-            return;
-        } else if (!strcmp(v_name, a_name)) {
-            change_var_value(list, node, &v_name, &a_name);
+        get_names((*list)->data, &var_name, arg, &arg_name);
+        if (strcmp(var_name, arg_name) > 0) {
+            mx_var_list_push_front(&node, &list, &arg_name, &var_name);
             return;
         }
-        mx_var_list_push_mid(list, &node, a_name, &v_name);
-        mx_delete_names(&v_name, &a_name, NULL);
-    } else {
-        *list = node;
+        else if (!strcmp(var_name, arg_name)) {
+            change_var_value(list, node, &var_name, &arg_name);
+            return;
+        }
+        mx_var_list_push_mid(list, &node, arg_name, &var_name);
+        mx_delete_names(&var_name, &arg_name, NULL);
     }
+    else
+        *list = node;
 }
