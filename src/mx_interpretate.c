@@ -1,12 +1,13 @@
 #include "ush.h"
 
 static char *format_quotes(char *str) {
-    char *result = mx_strnew(ARG_MAX);
-    unsigned int len = strlen(str);
+    char *res = mx_strnew(ARG_MAX);
+    unsigned int length = strlen(str);
     unsigned int index = 0;
     bool is_quotes[2] = {false, false};
+    unsigned int i = 0;
 
-    for (unsigned int i = 0; i < len; i++) {
+    while (i < length) {
         if ((str[i] == '\'') && !mx_isescape_char(str, i) && !is_quotes[1])
             is_quotes[0] = !is_quotes[0];
         if ((str[i] == '\"') && !mx_isescape_char(str, i) && !is_quotes[0])
@@ -15,19 +16,20 @@ static char *format_quotes(char *str) {
             && (str[i + 1] == '$' || str[i + 1] == '\\')) {
             i++;
         }
-        result[index++] = str[i];
+        res[index++] = str[i];
+        i++;
     }
     mx_strdel(&str);
-    return result;
+    return res;
 }
 
 static char *get_formated_arg(char *str) {
-    char *result = mx_strnew(ARG_MAX);
-    unsigned int len = strlen(str);
+    char *res = mx_strnew(ARG_MAX);
+    unsigned int length = strlen(str);
     unsigned int index = 0;
     bool is_quotes[2] = {false, false};
-
-    for (unsigned int i = 0; i < len; i++) {
+    unsigned int i = 0;
+    while (i < length) {
         if ((str[i] == '\'') && !is_quotes[1]) {
             is_quotes[0] = !is_quotes[0];
             continue;
@@ -38,28 +40,29 @@ static char *get_formated_arg(char *str) {
         }
         if (mx_isescape_char(str, i + 1) && !is_quotes[0] && !is_quotes[1])
             i++;
-        result[index++] = str[i];
+        res[index++] = str[i];
+        i++;
     }
-    return result;
+    return res;
 }
 
 static char **get_result(char *command) {
-    char **result = NULL;
-    t_list *arguments = NULL;
-    int len = 0;
-    unsigned int i = 0;
+    char **res = NULL;
+    t_list *arg = NULL;
+    int length = 0;
 
-    arguments = mx_split_command(command);
-    len = mx_list_size(arguments);
-    result = malloc(sizeof(char*) * (len + 1));
-    result[len] = NULL;
-    for (t_list *cur = arguments; cur; cur = cur->next) {
+    arg = mx_split_command(command);
+    length = mx_list_size(arg);
+    res = malloc(sizeof(char *) * (length + 1));
+    res[length] = NULL;
+    t_list *cur = arg;
+    for (unsigned int i = 0; cur; cur = cur->next) {
         cur->data = format_quotes(cur->data);
-        result[i++] = get_formated_arg(cur->data);
+        res[i++] = get_formated_arg(cur->data);
     }
-    mx_del_list(&arguments);
+    mx_del_list(&arg);
     mx_strdel(&command);
-    return result;
+    return res;
 }
 
 char **mx_interpretate(char *command, int *code) {
