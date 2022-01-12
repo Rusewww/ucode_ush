@@ -1,12 +1,14 @@
 #include "ush.h"
 
 bool mx_issubstitution(char *arg) {
-    unsigned int len = strlen(arg);
-    bool result = false;
+    unsigned int length = strlen(arg);
+    bool res = false;
 
-    if (arg[0] == '`' && arg[len - 1] == '`')
-        result = true;
-    if (arg[0] == '$' && arg[1] == '(' && arg[len - 1] == ')')
-        result = true;
-    return result;
-}
+    if (arg[0] == '`' && arg[length - 1] == '`') {
+        res = true;
+    }
+    if (arg[0] == '$' && arg[1] == '(' && arg[length - 1] == ')') {
+        res = true;
+
+        return res;
+    }
