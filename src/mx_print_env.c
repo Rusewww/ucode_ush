@@ -2,7 +2,9 @@
 
 void mx_print_env(int fd) {
     extern char **environ;
-
-    for (int i = 0; environ[i]; i++)
+    int i = 0;
+    while (environ[i]) {
         dprintf(fd, "%s\n", environ[i]);
+        i++;
+    }
 }
