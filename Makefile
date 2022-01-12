@@ -73,8 +73,6 @@ SRC = mx_ush.c \
 	mx_skip_expansion.c \
 	mx_skip_quotes.c \
 	mx_parse_command.c \
-	mx_true.c \
-	mx_false.c \
 	mx_var_list_delete.c \
 	mx_make_null_index.c \
 	mx_source.c \
@@ -100,11 +98,9 @@ SRC = mx_ush.c \
 	mx_init_signals.c \
 	mx_exec_copy_argv.c \
 	mx_check_dir_exists.c \
-	mx_set.c \
 	mx_var_list_insert_func.c \
 	mx_check_s_slash.c \
 	mx_oldpwd.c \
-	mx_chdir.c \
 	mx_clear_slash_end.c \
 	mx_builtin_which.c \
 	mx_unset_var.c \
