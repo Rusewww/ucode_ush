@@ -1,17 +1,17 @@
 #include "ush.h"
 
 void mx_home(t_map **map) {
-    int result = chdir(getenv("HOME"));
-    char *newdir = getenv("HOME");
+    int res = chdir(getenv("HOME"));
+    char *dir = getenv("HOME");
 
-    if (result < 0) {
-        if (newdir == NULL)
+    if (res < 0) {
+        if (dir == NULL) {
             fprintf(stderr, "cd: HOME not set\n");
-        else {
-            fprintf(stderr, "cd: %s: ", newdir);
+        } else {
+            fprintf(stderr, "cd: %s: ", dir);
             perror("");
         }
         return;
     }
-    mx_change_map(map, newdir);
+    mx_change_map(map, dir);
 }

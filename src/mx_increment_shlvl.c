@@ -1,15 +1,16 @@
 #include "ush.h"
 
 void mx_increment_shlvl(void) {
-    int new_lvl = 1;
+    int lvl_up = 1;
     char *curr_lvl = mx_get_var_val(SHELL, "SHLVL");
-    char shlvl[NAME_MAX];
+    char sh_lvl[NAME_MAX];
     char *arg[2] = {NULL, NULL};
 
-    if (curr_lvl != NULL)
-        new_lvl += atoi(curr_lvl);
-    sprintf(shlvl, "SHLVL=%d", new_lvl);
-    arg[0] = strdup(shlvl);
+    if (curr_lvl != NULL) {
+        lvl_up += atoi(curr_lvl);
+    }
+    sprintf(sh_lvl, "SHLVL=%d", lvl_up);
+    arg[0] = strdup(sh_lvl);
     mx_export(arg, 1);
     mx_strdel(&arg[0]);
 }
