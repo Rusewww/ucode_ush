@@ -1,37 +1,36 @@
 #include "ush.h"
 
-static t_list *get_process_by_cmd(char *arg, t_list *processes) {
-    t_list *ret_process = NULL;
-    unsigned int count_processes = 0;
+static t_list *get_process_by_cmd(char *arg, t_list *proc) {
+    t_list *ret = NULL;
+    unsigned int count = 0;
     t_process *tmp = NULL;
 
-    while (processes) {
-        tmp = (t_process*)processes->data;
+    for (; proc; proc = proc->next) {
+        tmp = (t_process *) proc->data;
         if (!mx_get_substr_index(tmp->cmd, arg)) {
-            count_processes++;
-            ret_process = processes;
+            count++;
+            ret = proc;
         }
-        processes = processes->next;
     }
-    if (count_processes == 1)
-        return ret_process;
-    else if (count_processes > 1)
+    if (count == 1) {
+        return ret;
+    } else if (count > 1) {
         fprintf(stderr, "fg: %s: ambiguous job spec\n", arg);
-    else if (!count_processes)
+    } else if (!count) {
         fprintf(stderr, "fg: %s: no such job\n", arg);
+    }
     return NULL;
 }
 
-static t_list *get_process_by_id(char *arg, t_list *processes) {
-    int cur_pos = atoi(arg);
+static t_list *get_process_by_id(char *arg, t_list *proc) {
+    int cur = atoi(arg);
     t_process *tmp = NULL;
 
-    while (processes) {
-        tmp = (t_process*)processes->data;
-        if (tmp->pos == cur_pos) {
-            return processes;
+    for (; proc; proc = proc->next) {
+        tmp = (t_process *) proc->data;
+        if (tmp->pos == cur) {
+            return proc;
         }
-        processes = processes->next;
     }
     fprintf(stderr, "fg: %s: no such job\n", arg);
     return NULL;
@@ -39,28 +38,30 @@ static t_list *get_process_by_id(char *arg, t_list *processes) {
 
 static t_list *get_process(char *arg) {
     bool is_num = true;
-    unsigned int len = 0;
-    t_list **processes = mx_get_list_procs();
+    unsigned int lenght = 0;
+    t_list **proc = mx_get_list_procs();
 
     if (!arg)
-        return mx_get_last_process(*processes);
+        return mx_get_last_process(*proc);
     arg++;
-    len = strlen(arg);
-    for (unsigned int i = 0; i < len; i++) {
+    lenght = strlen(arg);
+    for (unsigned int i = 0; i < lenght; i++) {
         if (!isnumber(arg[i])) {
             is_num = false;
             break;
         }
     }
-    if (is_num)
-        return get_process_by_id(arg, *processes);
-    else
-        return get_process_by_cmd(arg, *processes);
+    if (is_num) {
+        return get_process_by_id(arg, *proc);
+    } else {
+        return get_process_by_cmd(arg, *proc);
+    }
 }
 
 static bool check_args(char **args) {
-    if (!mx_arr_size(args))
+    if (!mx_arr_size(args)) {
         return true;
+    }
     if (mx_arr_size(args) > 1) {
         fprintf(stderr, "fg: too many arguments\n");
         return false;
@@ -74,23 +75,23 @@ static bool check_args(char **args) {
 
 int mx_fg(char **args, int fd) {
     t_list *process = NULL;
-    t_process *f_process = NULL;
-    t_list **all_processes = mx_get_list_procs();
+    t_process *process_F_to_pay_respect = NULL;
+    t_list **all = mx_get_list_procs();
 
-    if (!check_args(args))
-        return 1;
+    if (!check_args(args)) {
+        return 1
+    }
     process = get_process(args[0]);
     if (process) {
-        f_process = (t_process*)process->data;
+        process_F_to_pay_respect = (t_process *) process->data;
         mx_disable_canon();
-        tcsetpgrp(STDIN_FILENO, f_process->gpid);
-        mx_continue_process(f_process, all_processes, fd);
+        tcsetpgrp(STDIN_FILENO, process_F_to_pay_respect->gpid);
+        mx_continue_process(process_F_to_pay_respect, all, fd);
         tcsetpgrp(STDIN_FILENO, getpgrp());
         mx_enable_canon();
-    }
-    else {
+    } else {
         fprintf(stderr, "%s", *args ? "" : "fg: no current jobs\n");
-        return 1;   
+        return 1;
     }
-    return f_process->status;
+    return process_F_to_pay_respect->status;
 }
