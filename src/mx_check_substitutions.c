@@ -1,15 +1,18 @@
 #include "ush.h"
 
-bool mx_check_substitutions(char *command) {
+bool mx_check_substitutions(char *cmnd) {
     bool g_quotes = false;
-    size_t len = strlen(command);
+    size_t length = strlen(cmnd);
 
-    for (unsigned int i = 0; i < len; i++) {
-        mx_skip_quotes(command, &i, MX_S_QUOTES);
-        mx_skip_expansion(command, &i);
-        if (command[i] == MX_GRAVE_ACCENT && !mx_isescape_char(command, i)) {
+    unsigned int i = 0;
+
+    while (i < length) {
+        mx_skip_quotes(cmnd, &i, MX_S_QUOTES);
+        mx_skip_expansion(cmnd, &i);
+        if (cmnd[i] == MX_GRAVE_ACCENT && !mx_isescape_char(cmnd, i)) {
             g_quotes = !g_quotes;
         }
+        i++
     }
     return !g_quotes;
 }
