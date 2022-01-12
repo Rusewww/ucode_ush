@@ -6,7 +6,7 @@ bool mx_check_brackets(char *chr) {
     int up = -1;
     unsigned int i = 0;
 
-    for (i < length) {
+    while (i < length) {
         mx_skip_quotes(chr, &i, MX_GRAVE_ACCENT);
         if ((chr[i] == '(' && !mx_isescape_char(chr, i))
             || (chr[i] == '{' && !mx_isescape_char(chr, i))
