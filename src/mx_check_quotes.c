@@ -1,32 +1,34 @@
 #include "ush.h"
 
-static void skip_quotes_expansion(char *command, unsigned int *i,
+static void skip_quotes_expansion(char *cmnd, unsigned int *i,
                                   bool s_quotes) {
     if (!s_quotes) {
-        mx_skip_quotes(command, i, MX_GRAVE_ACCENT);
-        mx_skip_expansion(command, i);
+        mx_skip_quotes(cmnd, i, MX_GRAVE_ACCENT);
+        mx_skip_expansion(cmnd, i);
     }
 }
 
-bool mx_check_quotes(char *command) {
-    size_t len = strlen(command);
+bool mx_check_quotes(char *cmnd) {
+    size_t length = strlen(cmnd);
     bool s_quotes = false;
     bool d_quotes = false;
+    unsigned int i = 0;
 
-    for (unsigned int i = 0; i < len; i++) {
-        skip_quotes_expansion(command, &i, s_quotes);
-        if (command[i] == MX_D_QUOTES
-            && !mx_isescape_char(command, i) && !s_quotes) {
+    while (i < length) {
+        skip_quotes_expansion(cmnd, &i, s_quotes);
+        if (cmnd[i] == MX_D_QUOTES
+            && !mx_isescape_char(cmnd, i) && !s_quotes) {
             d_quotes = !d_quotes;
         }
-        if (command[i] == MX_S_QUOTES && !d_quotes) {
+        if (cmnd[i] == MX_S_QUOTES && !d_quotes) {
             if (!s_quotes) {
-                if (!mx_isescape_char(command, i))
+                if (!mx_isescape_char(cmnd, i))
                     s_quotes = !s_quotes;
-            }
-            else if (s_quotes)
+            } else if (s_quotes) {
                 s_quotes = !s_quotes;
+            }
         }
+        i++;
     }
     return !s_quotes && !d_quotes;
 }
