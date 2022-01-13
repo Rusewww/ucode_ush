@@ -70,7 +70,7 @@ bool mx_get_sub(char *arg, char *sub, int *code) {
         sub_trimmed = mx_strtrim(sub);
         if (mx_check_trimmed_str(sub_trimmed, sub))
             return true;
-        commands = mx_parse_command(sub, code);
+        commands = mx_parse_cmnd(sub, code);
     }
     if (*code || !commands)
         return false;
