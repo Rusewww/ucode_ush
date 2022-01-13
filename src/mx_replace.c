@@ -330,7 +330,7 @@ void mx_inc_val_var(unsigned int *length, unsigned int add, char *var) {
 
 
 bool mx_get_sub(char *arg, char *sub, int *code) {
-    char **commands = NULL;
+    char **cmnds = NULL;
     bool sub_type = true;
     char *sub_trimmed = NULL;
 
@@ -340,15 +340,15 @@ bool mx_get_sub(char *arg, char *sub, int *code) {
         sub_trimmed = mx_strtrim(sub);
         if (mx_check_trimmed_str(sub_trimmed, sub))
             return true;
-        commands = mx_parse_cmnd(sub, code);
+        cmnds = mx_parse_cmnd(sub, code);
     }
-    if (*code || !commands)
+    if (*code || !cmnds)
         return false;
     if (sub_type)
-        mx_replace_sub_escapes(commands);
-    parse_commands(commands, sub, arg, code);
+        mx_replace_sub_escapes(cmnds);
+    parse_commands(cmnds, sub, arg, code);
     mx_strdel(&sub);
-    mx_del_strarr(&commands);
+    mx_del_strarr(&cmnds);
     return true;
 }
 
@@ -395,10 +395,10 @@ char *mx_replace_tilde(char *arg) {
     return res;
 }
 
-void mx_replace_sub_escapes(char **commands) {
-    for (unsigned int i = 0; commands[i]; i++) {
-        commands[i] = mx_replace_escape(commands[i], "\\`", MX_GRAVE_ACCENT, true);
-        commands[i] = mx_replace_escape(commands[i], "\\\\", '\\', true);
+void mx_replace_sub_escapes(char **cmnd) {
+    for (unsigned int i = 0; cmnd[i]; i++) {
+        cmnd[i] = mx_replace_escape(cmnd[i], "\\`", MX_GRAVE_ACCENT, true);
+        cmnd[i] = mx_replace_escape(cmnd[i], "\\\\", '\\', true);
     }
 }
 
@@ -416,8 +416,8 @@ bool mx_check_user(char *username) {
 }
 
 char *mx_check_user_file(char *tmp_name) {
-    char *pasfile = mx_file_to_str("/etc/passwd");
-    char **lines = mx_strsplit(pasfile, '\n');
+    char *pas_file = mx_file_to_str("/etc/passwd");
+    char **lines = mx_strsplit(pas_file, '\n');
     char **data = NULL;
     char *res = NULL;
     unsigned int i = 0;
@@ -426,7 +426,7 @@ char *mx_check_user_file(char *tmp_name) {
             data = mx_strsplit(lines[i], ':');
             if (!strcmp(data[0], tmp_name)) {
                 res = strdup(data[5]);
-                clear_data(&pasfile, &data, &lines);
+                clear_data(&pas_file, &data, &lines);
                 return res;
             }
             mx_del_strarr(&data);
@@ -434,13 +434,13 @@ char *mx_check_user_file(char *tmp_name) {
         i++;
     }
     mx_del_strarr(&lines);
-    mx_strdel(&pasfile);
+    mx_strdel(&pas_file);
     return NULL;
 }
 
-char *mx_get_invalid_sub(char **arg, char **result, char **sub) {
+char *mx_get_invalid_sub(char **arg, char **res, char **sub) {
     mx_strdel(arg);
-    mx_strdel(result);
+    mx_strdel(res);
     mx_strdel(sub);
     return NULL;
 }

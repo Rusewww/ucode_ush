@@ -66,24 +66,11 @@ char *mx_str_prompt(void);
 void mx_print_sh_error(char *process, char *message);
 void mx_print_var_list(t_var_list key, int fd);
 char *mx_replace_special(char *argument);
-char *mx_replace_escape(char *arg, char *escape, char new, bool in_q);
-char *mx_replace_env(char *arg, int *code);
-char *mx_replace_tilde(char *arg);
 bool mx_find_command(char *path, char *command, char **filename);
-char *mx_replace_substitution(char *arg, int *code);
-bool mx_get_sub(char *arg, char *sub, int *code);
 t_process *mx_get_process_by_id(int id);
 void mx_enable_signals(t_process *process);
 void mx_disable_signals(t_process *process);
-bool mx_replace_env_var(char *result, char *env, unsigned int *index, unsigned int len);
-void mx_inc_val_var(unsigned int *len, unsigned int add, char *var);
-char *mx_get_invalid_sub(char **arg, char **result, char **sub);
-void mx_replace_sub_escapes(char **commands);
 bool check_stdin(int *exit_code);
-char *mx_get_output_fd(int fd);
-char *mx_check_user_file(char *tmp_name);
-bool mx_check_user(char *user_name);
-bool mx_check_trimmed_str(char *sub_trimmed, char *sub);
 int mx_unset_var(char *var);
 int mx_print_env_error(char option, char *err_arg, int error);
 void mx_pop_process(int id);
@@ -264,5 +251,24 @@ void mx_put_env(char *var);
 //mx_remove_sub_char
 
 bool mx_remove_sub_char(char *subs);
+
+//mx_replace
+
+char *mx_get_invalid_sub(char **arg, char **res, char **sub);
+char *mx_check_user_file(char *tmp_name);
+bool mx_check_user(char *username);
+void mx_replace_sub_escapes(char **cmnd);
+char *mx_replace_tilde(char *arg);
+char *mx_replace_substitution(char *arg, int *code);
+bool mx_get_sub(char *arg, char *sub, int *code);
+void mx_inc_val_var(unsigned int *length, unsigned int add, char *var);
+bool mx_check_trimmed_str(char *sub_trim, char *sub);
+bool mx_replace_env_var(char *res, char *env, unsigned int *index, unsigned int length);
+char *mx_replace_escape(char *arg, char *esc, char new, bool in_q);
+char *mx_replace_env(char *arg, int *code);
+char *mx_get_output_fd(int fd);
+
+
+
 
 #endif
