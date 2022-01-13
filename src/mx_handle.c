@@ -80,7 +80,7 @@ static void set_cursor(t_prompt *prompt) {
 }
 
 void mx_handle_cmnd(char *cmnd, int *code) {
-    char **cmnds = mx_parse_command(cmnd, code);
+    char **cmnds = mx_parse_cmnd(cmnd, code);
     char **argum = NULL;
     t_map **map = mx_get_lenv();
 
