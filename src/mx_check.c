@@ -81,15 +81,15 @@ bool mx_check_substitutions(char *c) {
     return !g_quotes;
 }
 
-int mx_pre_interpret(char *command) {
+int mx_pre_interpret(char *c) {
     int res = 0;
-    if (!(res = mx_check_quotes(command))) {
+    if (!(res = mx_check_quotes(c))) {
         fprintf(stderr, "%s: missing terminating character\n", MX_SHELL_NAME);
-    } else if (!(res = mx_check_parentheses(command))) {
+    } else if (!(res = mx_check_parentheses(c))) {
         fprintf(stderr, "%s: missing brace character\n", MX_SHELL_NAME);
-    } else if (!(res = mx_check_substitutions(command))) {
+    } else if (!(res = mx_check_substitutions(c))) {
         fprintf(stderr, "%s: missing subsitution character\n", MX_SHELL_NAME);
-    } else if (!(res = mx_check_char(command))) {
+    } else if (!(res = mx_check_char(c))) {
         fprintf(stderr, "%s: command contain forbidden character\n", MX_SHELL_NAME);
     }
     return !res;

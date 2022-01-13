@@ -121,8 +121,6 @@ char **mx_split_commands(char *command);
 
 void mx_print_sh_error(char *process, char *message);
 
-int mx_preinterpretate(char *command);
-
 void mx_handle_command(char *command, int *code);
 
 t_list **mx_get_var_list(t_var_list key);
@@ -336,5 +334,6 @@ bool mx_check_parentheses(char *c);
 bool mx_check_char(char *c);
 bool mx_check_substitutions(char *c);
 bool mx_check_quotes(char *c);
+int mx_pre_interpret(char *c);
 
 #endif
