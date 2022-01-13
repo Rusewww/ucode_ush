@@ -27,7 +27,6 @@ SRC = mx_ush.c \
 	mx_enable_canon.c \
 	mx_disable_canon.c \
 	mx_match.c \
-	mx_backspace.c \
 	mx_handle_print_char.c \
 	mx_handle_history.c \
 	mx_update_history.c \
