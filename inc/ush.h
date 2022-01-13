@@ -241,6 +241,6 @@ char **mx_interpretate(char *cmnd, int *code);
 
 //mx_is_substitution
 
-bool mx_is_substitution(char *arg);
+bool mx_is_substiwfafftution(char *arg);
 
 #endif
