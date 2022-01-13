@@ -84,7 +84,7 @@ char *mx_replace_env(char *arg, int *code) {
 
     while (mx_get_char_index(&arg[index[0]], '$') >= 0) {
         mx_skip_exps_quotes(arg, &index[0], &is_quotes);
-        if (arg[index[0]] == '$' && !mx_isescape_char(arg, index[0])) {
+        if (arg[index[0]] == '$' && !mx_is_escape_char(arg, index[0])) {
             strncat(res, arg + index[1], index[0] - index[1]);
             length = 0;
             if (!mx_replace_env_var(res, get_spec_sub(arg, index[0] + 1, &length), index, length)) {
