@@ -20,7 +20,7 @@ SRC = mx_ush.c \
 	mx_replace_substitution.c \
 	mx_split_command.c \
 	mx_replace_tilde.c \
-	mx_check_brackets.c \
+	mx_check.c \
 	mx_get_input.c \
     mx_export.c \
 	mx_unset.c \
