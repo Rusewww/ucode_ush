@@ -24,7 +24,6 @@ SRC = mx_ush.c \
 	mx_canon.c \
 	mx_match.c \
 	mx_update_history.c \
-	mx_print_env.c \
 	mx_which.c \
 	mx_str_prompt.c \
 	mx_interpretate.c \
@@ -32,7 +31,7 @@ SRC = mx_ush.c \
 	mx_split_cmds.c \
 	mx_handle.c \
 	mx_parse.c \
-	mx_print_var_list.c \
+	mx_print.c \
 	mx_check_escape.c \
 	mx_replace_escape.c \
 	mx_replace_env.c \
@@ -44,10 +43,8 @@ SRC = mx_ush.c \
 	mx_skip.c \
 	mx_make_null_index.c \
 	mx_source.c \
-	mx_put_pwd.c \
 	mx_find_command.c \
 	mx_putenv.c \
-	mx_print_env_error.c \
 	mx_env_parse.c \
 	mx_replace_sub.c \
 	mx_exit.c \

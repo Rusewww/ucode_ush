@@ -1,6 +1,6 @@
 #include "../inc/ush.h"
 
-void mx_putenv(char *var) {
+void mx_put_env(char *var) {
     static char name[1024];
     static char val[1024];
     char *received_n = mx_get_var_info(var, 0);

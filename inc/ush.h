@@ -61,7 +61,6 @@ typedef struct s_prompt {
     char tmp_command[ARG_MAX + 1];
 } t_prompt;
 
-void mx_print_env(int fd);
 void mx_update_history(t_prompt *prompt);
 char *mx_str_prompt(void);
 void mx_print_sh_error(char *process, char *message);
@@ -87,14 +86,11 @@ char *mx_check_user_file(char *tmp_name);
 bool mx_check_user(char *user_name);
 bool mx_check_trimmed_str(char *sub_trimmed, char *sub);
 int mx_unset_var(char *var);
-void mx_put_pwd(char *pwd, char *oldpwd);
 int mx_print_env_error(char option, char *err_arg, int error);
-void mx_putenv(char *var);
 void mx_pop_process(int id);
 int mx_get_process_id_by_pid(pid_t pid);
 pid_t mx_get_process_pid_by_id(int id);
 int mx_unset(char **args);
-int mx_pwd(char **flags, int fd);
 int mx_which(char **args, int fd);
 char **mx_source(char *str);
 
@@ -251,5 +247,19 @@ void mx_old_pwd(char *new_dir, t_map **map, int fd);
 char **mx_parse_cmnd(char *cmnd, int *code);
 char *mx_parse_path(char *path, char *new_dir, t_map **map);
 
+//mx_print
+
+void mx_print_env(int fd);
+int mx_print_env_error(char option, char *err_arg, int error);
+void mx_print_var_list(t_var_list key, int fd);
+
+//mx_pwd
+
+int mx_pwd(char **flags, int fd);
+void mx_put_pwd(char *pwd, char *old_pwd);
+
+//mx_put_env
+
+void mx_put_env(char *var);
 
 #endif
