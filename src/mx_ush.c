@@ -4,7 +4,7 @@ void mx_init(void) {
     mx_putenv("MX_PROMPT=u$h> ");
     mx_init_var_lists();
     mx_init_map_vars();
-    mx_increment_shlvl();
+    mx_increase_sh_lvl();
     if (getenv("HOME") == NULL) {
         struct passwd *pw = getpwuid(getuid());
         char *home = mx_strjoin("HOME=", pw->pw_dir);
