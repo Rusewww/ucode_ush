@@ -1,7 +1,7 @@
 #include "../inc/ush.h"
 
 static void env_deinit(char ***env, char **path, char **name) {
-    mx_clearenv();
+    mx_clear_env();
     mx_env_fill(*env);
     if (*env && *env[0]) {
         mx_del_strarr(env);
