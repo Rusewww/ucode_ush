@@ -148,4 +148,6 @@ t_list **mx_get_list_procs(void);
 bool mx_check_colons(char **cmnd, int *code);
 bool mx_check_exists(char *dir);
 
+void mx_backspace(unsigned int times, int dir);
+
 #endif

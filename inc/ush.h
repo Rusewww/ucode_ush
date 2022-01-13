@@ -66,7 +66,6 @@ void mx_disable_canon(void);
 bool mx_match(char *src, char *regex);
 void mx_print_env(int fd);
 bool mx_is_flag_stop(char *flag);
-void mx_backspace(unsigned int times, int fd);
 void mx_handle_print_char(t_prompt *prompt);
 bool mx_handle_history(t_prompt *prompt);
 void mx_update_history(t_prompt *prompt);

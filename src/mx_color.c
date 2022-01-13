@@ -2,7 +2,6 @@
 
 int mx_color(char **args) {
     int color = 0;
-
     if (!args[0]) {
         fprintf(stderr, "usage: color [1234567]\n");
         return 1;
@@ -28,7 +27,6 @@ int mx_color(char **args) {
 
 void mx_print_color(int color) {
     static int s_color = -1;
-
     if (color != -1) {
         printf("\x1b[0;3%dm", color);
         s_color = color;
