@@ -1,4 +1,4 @@
-#include "../inc/libmx.h"
+#include "../inc/ush.h"
 
 static int count_size_of_path(char **split_path) {
     int size = 0;
