@@ -70,7 +70,6 @@ void mx_print_var_list(t_var_list key, int fd);
 char *mx_replace_special(char *argument);
 char *mx_replace_escape(char *arg, char *escape, char new, bool in_q);
 char *mx_replace_env(char *arg, int *code);
-bool mx_issubstitution(char *arg);
 bool mx_remove_subchar(char *substitution);
 char **mx_parse_command(char *command, int *code);
 char *mx_replace_tilde(char *arg);
@@ -240,6 +239,8 @@ void mx_de_init(void);
 
 char **mx_interpretate(char *cmnd, int *code);
 
+//mx_is_substitution
 
+bool mx_is_substitution(char *arg);
 
 #endif

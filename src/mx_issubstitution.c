@@ -1,6 +1,6 @@
 #include "../inc/ush.h"
 
-bool mx_issubstitution(char *arg) {
+bool mx_is_substitution(char *arg) {
     unsigned int length = strlen(arg);
     bool res = false;
     if (arg[0] == '`' && arg[length - 1] == '`') {
