@@ -184,7 +184,7 @@ void mx_skip_quotes_if(bool *quote, char *arg, unsigned int *i);
 
 //mx_split_cmds
 
-t_list *mx_split_cmd(char *command)
+t_list *mx_split_cmd(char *command);
 t_list *mx_split_cmds(char *command);
 
 
