@@ -162,4 +162,6 @@ void mx_var_list_delete(t_var_list key, char *del_n);
 
 void mx_rcmd(char *dst, char *src, size_t size, unsigned int *index);
 
+char *mx_clear_slash_end(char *str);
+
 #endif

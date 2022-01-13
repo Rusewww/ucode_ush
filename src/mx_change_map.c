@@ -3,7 +3,6 @@
 void mx_change_map(t_map **map, char *dir) {
     char *tmp = mx_strnew(mx_strlen(mx_get_map(map, "PWD")));
     char *path;
-
     if (strcmp(dir, "~OLDPWD") != 0) {
         tmp = mx_strcpy(tmp, mx_get_map(map, "PWD"));
         path = mx_parse_path(tmp, dir, map);

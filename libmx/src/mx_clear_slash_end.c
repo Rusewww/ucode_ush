@@ -1,4 +1,4 @@
-#include "../inc/ush.h"
+#include "../inc/libmx.h"
 
 char *mx_clear_slash_end(char *str) {
     if (str[mx_strlen(str) - 1] == '/' && mx_strlen(str) > 1) {

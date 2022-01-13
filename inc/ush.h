@@ -75,7 +75,6 @@ char **mx_interpretate(char *command, int *code);
 void mx_print_sh_error(char *process, char *message);
 void mx_handle_command(char *command, int *code);
 void mx_print_var_list(t_var_list key, int fd);
-bool mx_check_escape(char *command);
 bool mx_isescape_char(char *command, int i);
 char *mx_replace_special(char *argument);
 char *mx_replace_escape(char *arg, char *escape, char new, bool in_q);
@@ -121,7 +120,6 @@ void mx_deinit(void);
 char **mx_make_null_index(char **split, int index);
 void mx_increment_shlvl(void);
 int mx_unset_var(char *var);
-void mx_change_map(t_map **map, char *newdir);
 void mx_put_pwd(char *pwd, char *oldpwd);
 char **mx_env_copy(void);
 int mx_print_env_error(char option, char *err_arg, int error);
@@ -132,7 +130,6 @@ void mx_env_parse_vars(char **argv, char **path, int *idx);
 int mx_env_parse_flags(char **argv, char **path, int *idx);
 void mx_oldpwd(char *newdir, t_map **map, int fd);
 void mx_home(t_map **map);
-char *mx_clear_slash_end(char *str);
 void mx_pop_process(int id);
 int mx_get_process_id_by_pid(pid_t pid);
 pid_t mx_get_process_pid_by_id(int id);
@@ -161,15 +158,6 @@ int mx_pre_interpret(char *c);
 
 void mx_get_in(t_prompt *prompt, int fd, int *code);
 
-//mx_cd
-
-int mx_cd(char **split, int dir);
-void mx_change_dir(char *new_dir, t_map **map, int dir);
-void mx_cd_flags(char *flag, t_map **map, char *new_dir);
-void mx_flag_p_slash(char *nd, t_map **map);
-void mx_flag_p_path(t_map **map, char *new_dir);
-void mx_check_s_slash(char *dir, t_map **map);
-
 //mx_skip
 
 void mx_skip_quotes(char *cmnd, unsigned int *i, char c);
@@ -188,5 +176,24 @@ char **mx_split_commands(char *command);
 
 bool mx_built_in(char *file, int *mode);
 bool mx_is_built_in(char *com);
+
+//mx_cd
+
+int mx_cd(char **split, int dir);
+void mx_change_dir(char *new_dir, t_map **map, int dir);
+void mx_cd_flags(char *flag, t_map **map, char *new_dir);
+void mx_flag_p_slash(char *nd, t_map **map);
+void mx_flag_p_path(t_map **map, char *new_dir);
+void mx_check_s_slash(char *dir, t_map **map);
+
+//mx_change_map
+
+void mx_change_map(t_map **map, char *dir);
+
+//mx_check_escape
+
+bool mx_check_escape(char *cmnd);
+
+
 
 #endif
