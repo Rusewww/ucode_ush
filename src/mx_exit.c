@@ -13,18 +13,14 @@ static bool is_number_arg(char *arg) {
 
 int mx_exit(char **args) {
     int exitcode = 0;
-
     if (mx_arr_size(args) > 1 && is_number_arg(args[0])) {
         fprintf(stderr, "exit: too many arguments\n");
         return 1;
     }
-
-    mx_deinit();
-
+    mx_de_init();
     if (!*args) {
         exit(exitcode);
     }
-
     unsigned int i = 0;
 
     while (i < strlen(args[0])) {
@@ -34,7 +30,6 @@ int mx_exit(char **args) {
         }
         i++;
     }
-
     exitcode = atoi(args[0]);
     exit(exitcode);
 }
