@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 char **mx_source(char *str) {
     char *file = mx_file_to_str(str);

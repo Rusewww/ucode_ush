@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static void unset_all(void) {
     t_list **shell = mx_get_var_list(SHELL);

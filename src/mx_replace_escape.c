@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 char *mx_replace_escape(char *arg, char *esc, char new, bool in_q) {
     bool q = false;

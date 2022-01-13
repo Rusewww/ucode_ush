@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static bool type_check(struct dirent *entry, char *path) {
     char abs_path[PATH_MAX];

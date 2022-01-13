@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_get_name(char *var, char **name) {
     if (*name != NULL) {

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static void set_signals(sigset_t *sig, int fd) {
     sigfillset(sig);

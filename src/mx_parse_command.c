@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 char **mx_parse_command(char *command, int *code) {
     char **cmd = NULL;
@@ -8,7 +8,7 @@ char **mx_parse_command(char *command, int *code) {
         return NULL;
     }
     mx_strdel(&cmd_trimmed);
-    if ((*code = mx_preinterpretate(command))) {
+    if ((*code = mx_pre_interpret(command))) {
         return NULL;
     }
     cmd = mx_split_commands(command);

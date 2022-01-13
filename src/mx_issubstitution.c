@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 bool mx_issubstitution(char *arg) {
     unsigned int length = strlen(arg);

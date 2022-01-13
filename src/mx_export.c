@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static bool parse_error(char *arg) {
     char *a_name = mx_get_var_info(arg, 0);

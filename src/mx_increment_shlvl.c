@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_increment_shlvl(void) {
     int lvl_up = 1;

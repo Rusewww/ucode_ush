@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_put_pwd(char *pwd, char *old_pwd) {
     char *new_pwd = mx_strjoin("PWD=", pwd);

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_del_process(t_process **process) {
     if (!MX_WIFSTOPPED((*process)->status)) {

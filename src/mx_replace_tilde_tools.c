@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static void clear_data(char **s2, char ***a_s1, char ***a_s2) {
     mx_del_strarr(a_s1);

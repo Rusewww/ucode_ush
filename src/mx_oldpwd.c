@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_oldpwd(char *new_dir, t_map **map, int fd) {
     char *str = strdup(mx_get_map(map, "OLDPWD"));

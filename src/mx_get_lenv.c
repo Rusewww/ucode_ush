@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 t_map **mx_get_lenv(void) {
     static t_map *lenv = NULL;

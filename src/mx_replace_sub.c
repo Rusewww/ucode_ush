@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static void append(char **result, char *buf) {
     char *tmp_str = mx_strjoin(*result, buf);

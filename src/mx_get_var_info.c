@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 char *mx_get_var_info(char *arg, bool type) {
     char *out = NULL;

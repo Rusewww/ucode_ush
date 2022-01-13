@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 bool mx_check_quotes(char *c) {
     size_t length = strlen(c);

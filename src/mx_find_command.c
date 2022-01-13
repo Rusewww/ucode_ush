@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static bool check_dir(char *path, char *file) {
     DIR *dir = opendir(path);

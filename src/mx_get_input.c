@@ -1,12 +1,4 @@
-#include "ush.h"
-
-/*static void clear_prompt(t_prompt *prompt) {
-    memset(prompt->command, '\0', sizeof(prompt->command));
-    memset(prompt->tmp_command, '\0', sizeof(prompt->tmp_command));
-    prompt->index = 0;
-    prompt->cursor_index = 0;
-    prompt->end = false;
-}*/
+#include "../inc/ush.h"
 
 static void set_code(t_prompt *prompt, int *code) {
     if (prompt->buff[0] == '\x03' && strlen(prompt->buff) == 1) {

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_delete_names(char **n_one, char **n_two, t_list *node) {
     if (n_one) {

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_update_history(t_prompt *prompt) {
     if (prompt->buff[0] == '\x03' && strlen(prompt->buff) == 1) {

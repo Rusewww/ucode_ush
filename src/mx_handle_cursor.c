@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_handle_cursor(t_prompt *prompt) {
     unsigned int left = prompt->index - prompt->cursor_index;

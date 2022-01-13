@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static char *argv_to_str(char **argv) {
     char str[ARG_MAX] = "";

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 int mx_cd(char **split, int dir) {
     t_map **map = mx_get_lenv();

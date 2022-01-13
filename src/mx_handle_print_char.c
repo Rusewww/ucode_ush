@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static void backspace_char(t_prompt *prompt, unsigned int d) {
     if (!prompt->cursor_index || !prompt->index) {

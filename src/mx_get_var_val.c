@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 char *mx_get_var_val(t_var_list key, char *var) {
     t_list **list = mx_get_var_list(key);

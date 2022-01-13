@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static char *format_quotes(char *str) {
     char *result = mx_strnew(ARG_MAX);

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_init(void) {
     mx_putenv("MX_PROMPT=u$h> ");

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_continue_process(t_process *process, t_list **processes, int fd) {
     if (kill(-process->pid, SIGCONT)) {

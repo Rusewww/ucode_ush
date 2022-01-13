@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_skip_exps_quotes(char *arg, unsigned int *index, bool *quote) {
     if (arg[*index] == MX_D_QUOTES && !mx_isescape_char(arg, *index)) {

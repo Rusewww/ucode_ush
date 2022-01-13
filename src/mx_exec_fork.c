@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_exec_fork(char **arguments, int fd) {
     pid_t child = fork();

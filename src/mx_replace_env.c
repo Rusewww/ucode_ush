@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static unsigned int get_len_spec(char *spec) {
     unsigned int i = 1;

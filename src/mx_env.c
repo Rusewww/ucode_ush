@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static void env_deinit(char ***env, char **path, char **name) {
     mx_clearenv();

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static t_list *get_process_by_cmd(char *arg, t_list *proc) {
     t_list *ret = NULL;

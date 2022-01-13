@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 bool mx_remove_subchar(char *subs) {
     unsigned int length = strlen(subs);

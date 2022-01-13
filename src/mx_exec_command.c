@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static int exec_builtin(char *command, char **argv, int fd) {
     if (!strcmp(command, "export")) {

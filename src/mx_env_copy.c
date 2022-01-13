@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static void copy_environ(char **copy, char **environ) {
     int i = 0;

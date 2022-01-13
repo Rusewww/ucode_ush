@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static bool check_link_full_path(t_map **map, char *newdir) {
     char *path = mx_strnew(mx_strlen(mx_get_map(map, "PWD"))

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 bool mx_check_dir_exists(char *dir) {
     if (chdir(dir) < 0) {

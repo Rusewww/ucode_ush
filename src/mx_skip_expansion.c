@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_skip_expansion(char *command, unsigned int *i) {
     int brawl_stars = 0;

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static char *get_flag_arg(char **args, int *flag_idx, int *rval, int *idx) {
     if (args[0][(*flag_idx) + 1] == '\0') {

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static bool check_pwd(char *pwd) {
     char *str = NULL;

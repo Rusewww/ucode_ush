@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_change_dir(char *newdir, t_map **map, int dir) {
     int result;

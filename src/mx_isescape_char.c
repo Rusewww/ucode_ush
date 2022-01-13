@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 bool mx_isescape_char(char *command, int i) {
     if (i > 0 && command[i - 1] == '\\' && !mx_isescape_char(command, i - 1)) {

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 int mx_print_env_error(char option, char *err_arg, int error) {
     if (error == 2) {

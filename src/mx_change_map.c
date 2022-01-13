@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_change_map(t_map **map, char *dir) {
     char *tmp = mx_strnew(mx_strlen(mx_get_map(map, "PWD")));

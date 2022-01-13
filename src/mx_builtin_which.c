@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 bool mx_builtin_which(char *file, int *mode) {
     if (mx_is_builtin(file)) {

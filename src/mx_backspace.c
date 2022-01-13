@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_backspace(unsigned int times, int dir) {
     unsigned int i = 0;

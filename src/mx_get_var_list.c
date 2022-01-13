@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 t_list **mx_get_var_list(t_var_list key) {
     static t_list *exp_l = NULL;

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static void get_quoted_sub(int *o_sub, int *c_sub, unsigned int *i, char *arg) {
     for (; arg[*i]; *i += 1) {

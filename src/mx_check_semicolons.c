@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 bool mx_check_semicolons(char **cmnd, int *code) {
     unsigned int index = 0;

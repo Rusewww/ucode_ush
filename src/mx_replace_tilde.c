@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static char *get_env(char *var, unsigned int *length, int add, char *arg) {
     char *res = mx_get_var_val(SHELL, var);

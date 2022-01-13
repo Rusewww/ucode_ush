@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_home(t_map **map) {
     int res = chdir(getenv("HOME"));

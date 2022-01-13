@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_check_s_slash(char *dir, t_map **map) {
     char *str = realpath(dir, NULL);

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_flag_p_slash(char *nd, t_map **map) {
     if (nd == NULL) {

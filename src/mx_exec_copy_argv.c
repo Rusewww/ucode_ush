@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 char **mx_exec_copy_argv(char **argv) {
     size_t size = mx_arr_size(argv);

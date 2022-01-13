@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_del_node_list(t_list **list, t_process **d_p) {
     t_list *cur = *list;

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_handle_command(char *cmnd, int *code) {
     char **cmnds = mx_parse_command(cmnd, code);

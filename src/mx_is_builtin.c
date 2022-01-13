@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 bool mx_is_builtin(char *command) {
     if (!strcmp(command, "pwd") || !strcmp(command, "cd") || !strcmp(command, "fg") || !strcmp(command, "env") ||

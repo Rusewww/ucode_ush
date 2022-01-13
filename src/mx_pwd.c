@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static bool parse_flags(char **flags, bool *mode) {
     bool stop_fl = 0;

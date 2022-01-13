@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static bool is_number_arg(char *arg) {
     unsigned int i = 0;

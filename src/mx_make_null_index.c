@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 char **mx_make_null_index(char **split, int index) {
     mx_strdel(&split[index]);

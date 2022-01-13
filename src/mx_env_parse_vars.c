@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 void mx_env_parse_vars(char **argv, char **path, int *idx) {
     char *name = NULL;

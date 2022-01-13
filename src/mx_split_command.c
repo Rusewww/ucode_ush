@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 t_list *mx_split_command(char *command) {
     t_list *result = NULL;

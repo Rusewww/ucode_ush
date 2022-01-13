@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static unsigned int set_flags(bool *is_nl, bool *is_e, char **argv) {
     unsigned int ind = 0;

@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 bool mx_check_escape(char *cmnd) {
     unsigned int i = 0;

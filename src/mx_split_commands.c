@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static int get_next_command(char *command) {
     unsigned int i = 0;

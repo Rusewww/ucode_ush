@@ -1,4 +1,4 @@
-#include "ush.h"
+#include "../inc/ush.h"
 
 static bool isvalid(t_prompt *prompt) {
     if (!mx_get_substr_index(prompt->tmp_history->data, prompt->tmp_command)
