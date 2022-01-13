@@ -6,10 +6,10 @@ char *mx_replace_escape(char *arg, char *esc, char new, bool in_q) {
     unsigned int index = 0;
     unsigned int i = 0;
     while (i < strlen(arg)) {
-        if (arg[i] == MX_D_QUOTES && !mx_isescape_char(arg, i)) {
+        if (arg[i] == MX_D_QUOTES && !mx_is_escape_char(arg, i)) {
             q = !q;
         }
-        if (arg[i] == esc[0] && arg[i + 1] == esc[1] && mx_isescape_char(arg, i + 1) && (q || in_q)) {
+        if (arg[i] == esc[0] && arg[i + 1] == esc[1] && mx_is_escape_char(arg, i + 1) && (q || in_q)) {
             i++;
             arg[i] = new;
         }
