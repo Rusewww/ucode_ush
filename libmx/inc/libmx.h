@@ -138,6 +138,26 @@ typedef struct s_list {
     struct s_list *next;
 } t_list;
 
+typedef struct s_d_list
+{
+    void *data;
+    struct s_d_list *next;
+    struct s_d_list *prev;
+}              t_d_list;
+
+typedef struct s_node
+{
+    void *data;
+    char *key;
+    struct s_node *next;
+}              t_node;
+
+typedef struct s_map
+{
+    t_node **nodes;
+    size_t size;
+}
+
 t_list *mx_create_node(void *data);
 
 void mx_push_front(t_list **list, void *data);
@@ -153,8 +173,6 @@ int mx_list_size(t_list *list);
 t_list *mx_sort_list(t_list *list, bool (*cmp)(void *, void *));
 
 void mx_del_list(t_list **list);
-
-
 
 bool mx_by_lex(void *a, void *b);
 
