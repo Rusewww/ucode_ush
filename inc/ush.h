@@ -68,7 +68,6 @@ void mx_print_var_list(t_var_list key, int fd);
 char *mx_replace_special(char *argument);
 char *mx_replace_escape(char *arg, char *escape, char new, bool in_q);
 char *mx_replace_env(char *arg, int *code);
-bool mx_remove_subchar(char *substitution);
 char *mx_replace_tilde(char *arg);
 bool mx_find_command(char *path, char *command, char **filename);
 char *mx_replace_substitution(char *arg, int *code);
@@ -261,5 +260,9 @@ void mx_put_pwd(char *pwd, char *old_pwd);
 //mx_put_env
 
 void mx_put_env(char *var);
+
+//mx_remove_sub_char
+
+bool mx_remove_sub_char(char *subs);
 
 #endif

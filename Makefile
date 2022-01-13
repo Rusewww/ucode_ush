@@ -39,12 +39,12 @@ SRC = mx_ush.c \
 	mx_cd.c \
 	mx_exec.c \
 	mx_process.c \
-	mx_remove_subchar.c \
+	mx_remove_sub_char.c \
 	mx_skip.c \
 	mx_make_null_index.c \
 	mx_source.c \
 	mx_find_command.c \
-	mx_putenv.c \
+	mx_put_env.c \
 	mx_env_parse.c \
 	mx_replace_sub.c \
 	mx_exit.c \

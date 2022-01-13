@@ -1,6 +1,6 @@
 #include "../inc/ush.h"
 
-bool mx_remove_subchar(char *subs) {
+bool mx_remove_sub_char(char *subs) {
     unsigned int length = strlen(subs);
     if (subs[0] == '`' && subs[length - 1] == '`') {
         subs[length - 1] = '\0';
