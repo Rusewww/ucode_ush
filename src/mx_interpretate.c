@@ -49,7 +49,7 @@ static char **get_result(char *command) {
     int len = 0;
     unsigned int i = 0;
 
-    arguments = mx_split_command(command);
+    arguments = mx_split_cmd(command);
     len = mx_list_size(arguments);
     result = malloc(sizeof(char*) * (len + 1));
     result[len] = NULL;
