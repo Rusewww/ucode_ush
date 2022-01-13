@@ -38,7 +38,6 @@ SRC = mx_ush.c \
 	mx_replace_env.c \
 	mx_echo.c \
 	mx_cd.c \
-	mx_issubstitution.c \
 	mx_exec.c \
 	mx_process.c \
 	mx_remove_subchar.c \

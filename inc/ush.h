@@ -239,8 +239,6 @@ void mx_de_init(void);
 
 char **mx_interpretate(char *cmnd, int *code);
 
-//mx_is_substitution
-
-bool mx_is_substiwfafftution(char *arg);
+//
 
 #endif
