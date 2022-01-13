@@ -1,6 +1,6 @@
 #include "../inc/ush.h"
 
-void mx_clearenv(void) {
+void mx_clear_env(void) {
     extern char **environ;
     char **del_var = NULL;
     char *del_n = NULL;

@@ -124,7 +124,6 @@ void mx_put_pwd(char *pwd, char *oldpwd);
 char **mx_env_copy(void);
 int mx_print_env_error(char option, char *err_arg, int error);
 void mx_putenv(char *var);
-void mx_clearenv(void);
 void mx_env_fill(char **src);
 void mx_env_parse_vars(char **argv, char **path, int *idx);
 int mx_env_parse_flags(char **argv, char **path, int *idx);
@@ -194,6 +193,8 @@ void mx_change_map(t_map **map, char *dir);
 
 bool mx_check_escape(char *cmnd);
 
+//mx_clear_env
 
+void mx_clear_env(void);
 
 #endif
