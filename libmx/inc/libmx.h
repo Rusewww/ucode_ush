@@ -164,4 +164,6 @@ void mx_rcmd(char *dst, char *src, size_t size, unsigned int *index);
 
 char *mx_clear_slash_end(char *str);
 
+bool mx_is_flag_stop(char *flag);
+
 #endif

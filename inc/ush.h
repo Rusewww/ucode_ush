@@ -63,10 +63,8 @@ typedef struct s_prompt {
 
 bool mx_match(char *src, char *regex);
 void mx_print_env(int fd);
-bool mx_is_flag_stop(char *flag);
 void mx_update_history(t_prompt *prompt);
 char *mx_str_prompt(void);
-char **mx_interpretate(char *command, int *code);
 void mx_print_sh_error(char *process, char *message);
 void mx_print_var_list(t_var_list key, int fd);
 bool mx_isescape_char(char *command, int i);
@@ -238,6 +236,11 @@ void mx_init_signals(void);
 void mx_init_map_v(void);
 void mx_init(void);
 void mx_de_init(void);
+
+//mx_interpretate
+
+char **mx_interpretate(char *cmnd, int *code);
+
 
 
 #endif

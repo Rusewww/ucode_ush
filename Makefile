@@ -25,7 +25,6 @@ SRC = mx_ush.c \
 	mx_match.c \
 	mx_update_history.c \
 	mx_print_env.c \
-	mx_is_flag_stop.c \
 	mx_which.c \
 	mx_str_prompt.c \
 	mx_interpretate.c \
