@@ -13,7 +13,6 @@ SRC = mx_ush.c \
 	mx_exec_fork.c \
 	mx_replace_tilde_tools.c \
 	mx_replace_funcs.c \
-	mx_continue_process.c \
 	mx_del_node_list.c \
 	mx_color.c \
 	mx_replace_substitution.c \
@@ -49,7 +48,7 @@ SRC = mx_ush.c \
 	mx_cd.c \
 	mx_issubstitution.c \
 	mx_exec.c \
-	mx_create_process.c \
+	mx_process.c \
 	mx_handle_substitution.c \
 	mx_remove_subchar.c \
 	mx_skip.c \

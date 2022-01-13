@@ -82,7 +82,6 @@ char *mx_replace_env(char *arg, int *code);
 bool mx_issubstitution(char *arg);
 int mx_exec(t_process *process, char *filename, char **argv, char **env);
 char **mx_exec_copy_argv(char **argv);
-t_process *mx_create_process(int fd);
 void mx_del_process(t_process **process);
 t_list *mx_handle_substitution(t_list *arguments);
 bool mx_remove_subchar(char *substitution);
@@ -96,7 +95,6 @@ t_process *mx_get_process_by_id(int id);
 void mx_del_node_list(t_list **list, t_process **process);
 void mx_enable_signals(t_process *process);
 void mx_disable_signals(t_process *process);
-void mx_continue_process(t_process *process, t_list **all_processes, int fd);
 bool mx_replace_env_var(char *result, char *env, unsigned int *index, unsigned int len);
 void mx_inc_val_var(unsigned int *len, unsigned int add, char *var);
 char *mx_get_invalid_sub(char **arg, char **result, char **sub);
@@ -104,13 +102,11 @@ void mx_kill_process(void);
 void mx_replace_sub_escapes(char **commands);
 void mx_exec_fork(char **arguments, int fd);
 bool check_stdin(int *exit_code);
-t_list *mx_get_last_process(t_list *processes);
 char *mx_get_output_fd(int fd);
 char *mx_check_user_file(char *tmp_name);
 bool mx_check_user(char *user_name);
 bool mx_check_trimmed_str(char *sub_trimmed, char *sub);
 void mx_kill_process();
-void mx_print_color(int color);
 void mx_init(void);
 void mx_init_var_lists(void);
 void mx_init_map_vars(void);
@@ -127,7 +123,6 @@ void mx_home(t_map **map);
 void mx_pop_process(int id);
 int mx_get_process_id_by_pid(pid_t pid);
 pid_t mx_get_process_pid_by_id(int id);
-int mx_color(char **args);
 int mx_exit(char **args);
 int mx_echo(char **args, int fd);
 int mx_unset(char **args);
@@ -200,6 +195,16 @@ void mx_env_fill(char **src);
 int mx_env_flags_parse(char **argv, char **path, int *idx);
 void mx_env_vars_parse(char **argv, char **path, int *idx);
 
+//mx_color
+
+void mx_print_color(int color);
+int mx_color(char **args);
+
+//mx_process
+
+t_list *mx_get_last_proc(t_list *processes);
+t_process *mx_create_proc(int fd);
+void mx_continue_proc(t_process *process, t_list **processes, int fd);
 
 
 #endif
