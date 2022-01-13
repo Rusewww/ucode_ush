@@ -108,10 +108,8 @@ void mx_del_node_list(t_list **list, t_process **process);
 void mx_enable_signals(t_process *process);
 void mx_disable_signals(t_process *process);
 void mx_continue_process(t_process *process, t_list **all_processes, int fd);
-void mx_skip_exps_quotes(char *arg, unsigned int *index, bool *is_quotes);
 bool mx_replace_env_var(char *result, char *env, unsigned int *index, unsigned int len);
 void mx_inc_val_var(unsigned int *len, unsigned int add, char *var);
-void mx_skip_quotes_if(bool *is_quotes, char *arg, unsigned int *i);
 char *mx_get_invalid_sub(char **arg, char **result, char **sub);
 void mx_kill_process(void);
 void mx_replace_sub_escapes(char **commands);
@@ -189,6 +187,8 @@ void mx_skip_quotes(char *cmnd, unsigned int *i, char c);
 void mx_skip_quotes_s(char *cmnd, unsigned int *i);
 void mx_skip_grave(char *cmnd, unsigned int *i);
 void mx_skip_exp(char *cmnd, unsigned int *i);
+void mx_skip_exps_quotes(char *arg, unsigned int *index, bool *quote);
+void mx_skip_quotes_if(bool *quote, char *arg, unsigned int *i);
 
 
 #endif
