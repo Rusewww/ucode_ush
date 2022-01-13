@@ -51,7 +51,6 @@ SRC = mx_ush.c \
 	mx_replace_env.c \
 	mx_delete_names.c \
 	mx_echo.c \
-	mx_check_semicolons.c \
 	mx_cd.c \
 	mx_issubstitution.c \
 	mx_exec.c \
@@ -85,9 +84,8 @@ SRC = mx_ush.c \
 	mx_init_map_vars.c \
 	mx_init_signals.c \
 	mx_exec_copy_argv.c \
-	mx_check_dir_exists.c \
 	mx_var_list_insert_func.c \
-	mx_check_s_slash.c \
+	mx_check.c \
 	mx_oldpwd.c \
 	mx_clear_slash_end.c \
 	mx_builtin_which.c \

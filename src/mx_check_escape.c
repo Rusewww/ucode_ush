@@ -4,7 +4,6 @@ bool mx_check_escape(char *cmnd) {
     unsigned int i = 0;
     while (cmnd[i]) {
         bool hlp = false;
-
         if (cmnd[i] == '\\') {
             if (mx_isescape_char(cmnd, i)) {
                 continue;
