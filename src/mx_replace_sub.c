@@ -66,7 +66,7 @@ bool mx_get_sub(char *arg, char *sub, int *code) {
 
     if (sub[0] == '$')
         sub_type = false;
-    if (mx_remove_subchar(sub)) {
+    if (mx_remove_sub_char(sub)) {
         sub_trimmed = mx_strtrim(sub);
         if (mx_check_trimmed_str(sub_trimmed, sub))
             return true;
