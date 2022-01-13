@@ -12,7 +12,7 @@ char **mx_parse_command(char *command, int *code) {
         return NULL;
     }
     cmd = mx_split_commands(command);
-    if (!mx_check_semicolons(cmd, code)) {
+    if (!mx_check_colons(cmd, code)) {
         mx_del_strarr(&cmd);
         return NULL;
     }
