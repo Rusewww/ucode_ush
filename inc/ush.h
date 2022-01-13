@@ -187,5 +187,6 @@ char **mx_split_commands(char *command);
 //mx_built_in
 
 bool mx_built_in(char *file, int *mode);
+bool mx_is_built_in(char *com);
 
 #endif

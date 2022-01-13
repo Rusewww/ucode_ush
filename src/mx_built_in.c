@@ -1,6 +1,6 @@
 #include "../inc/ush.h"
 
-static bool mx_is_built_in(char *com) {
+bool mx_is_built_in(char *com) {
     if (!strcmp(com, "pwd") || !strcmp(com, "cd") || !strcmp(com, "fg") || !strcmp(com, "env") ||
         !strcmp(com, "echo") || !strcmp(com, "exit") || !strcmp(com, "unset") ||
         !strcmp(com, "color") || !strcmp(com, "which") || !strcmp(com, "export")) {
