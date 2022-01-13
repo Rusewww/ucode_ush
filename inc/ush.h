@@ -61,8 +61,6 @@ typedef struct s_prompt {
     char tmp_command[ARG_MAX + 1];
 } t_prompt;
 
-void mx_enable_canon(void);
-void mx_disable_canon(void);
 bool mx_match(char *src, char *regex);
 void mx_print_env(int fd);
 bool mx_is_flag_stop(char *flag);
@@ -80,33 +78,25 @@ char *mx_replace_special(char *argument);
 char *mx_replace_escape(char *arg, char *escape, char new, bool in_q);
 char *mx_replace_env(char *arg, int *code);
 bool mx_issubstitution(char *arg);
-int mx_exec(t_process *process, char *filename, char **argv, char **env);
-char **mx_exec_copy_argv(char **argv);
-void mx_del_process(t_process **process);
 t_list *mx_handle_substitution(t_list *arguments);
 bool mx_remove_subchar(char *substitution);
 char **mx_parse_command(char *command, int *code);
-int mx_exec_command(char **argv, int fd);
 char *mx_replace_tilde(char *arg);
 bool mx_find_command(char *path, char *command, char **filename);
 char *mx_replace_substitution(char *arg, int *code);
 bool mx_get_sub(char *arg, char *sub, int *code);
 t_process *mx_get_process_by_id(int id);
-void mx_del_node_list(t_list **list, t_process **process);
 void mx_enable_signals(t_process *process);
 void mx_disable_signals(t_process *process);
 bool mx_replace_env_var(char *result, char *env, unsigned int *index, unsigned int len);
 void mx_inc_val_var(unsigned int *len, unsigned int add, char *var);
 char *mx_get_invalid_sub(char **arg, char **result, char **sub);
-void mx_kill_process(void);
 void mx_replace_sub_escapes(char **commands);
-void mx_exec_fork(char **arguments, int fd);
 bool check_stdin(int *exit_code);
 char *mx_get_output_fd(int fd);
 char *mx_check_user_file(char *tmp_name);
 bool mx_check_user(char *user_name);
 bool mx_check_trimmed_str(char *sub_trimmed, char *sub);
-void mx_kill_process();
 void mx_init(void);
 void mx_init_var_lists(void);
 void mx_init_map_vars(void);
@@ -124,7 +114,6 @@ void mx_pop_process(int id);
 int mx_get_process_id_by_pid(pid_t pid);
 pid_t mx_get_process_pid_by_id(int id);
 int mx_exit(char **args);
-int mx_echo(char **args, int fd);
 int mx_unset(char **args);
 int mx_export(char **args, int fd);
 int mx_pwd(char **flags, int fd);
@@ -205,6 +194,29 @@ int mx_color(char **args);
 t_list *mx_get_last_proc(t_list *processes);
 t_process *mx_create_proc(int fd);
 void mx_continue_proc(t_process *process, t_list **processes, int fd);
+void mx_del_process(t_process **process);
+void mx_kill_process(void);
+
+//mx_del_node_list
+
+void mx_del_node_list(t_list **list, t_process **d_p);
+
+//mx_canon
+
+void mx_disable_canon(void);
+void mx_enable_canon(void);
+
+//mx_echo
+
+int mx_echo(char **args, int dr);
+
+//mx_exec
+
+int mx_exec(t_process *process, char *name, char **argv, char **env);
+int mx_exec_command(char **argv, int fd);
+char **mx_exec_copy_argv(char **argv);
+char **mx_exec_copy_argv(char **argv);
+void mx_exec_fork(char **arguments, int fd);
 
 
 #endif

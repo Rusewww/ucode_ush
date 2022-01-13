@@ -10,7 +10,6 @@ LBMX = libmx.a
 INC = ush.h
 SRC = mx_ush.c \
 	main.c \
-	mx_exec_fork.c \
 	mx_replace_tilde_tools.c \
 	mx_replace_funcs.c \
 	mx_del_node_list.c \
@@ -22,8 +21,7 @@ SRC = mx_ush.c \
     mx_export.c \
 	mx_unset.c \
 	mx_pwd.c \
-	mx_enable_canon.c \
-	mx_disable_canon.c \
+	mx_canon.c \
 	mx_match.c \
 	mx_handle_print_char.c \
 	mx_handle_history.c \
@@ -56,9 +54,7 @@ SRC = mx_ush.c \
 	mx_make_null_index.c \
 	mx_source.c \
 	mx_put_pwd.c \
-	mx_exec_command.c \
 	mx_find_command.c \
-	mx_del_process.c \
 	mx_putenv.c \
 	mx_print_env_error.c \
 	mx_env_parse.c \
@@ -69,7 +65,6 @@ SRC = mx_ush.c \
 	mx_increment_shlvl.c \
 	mx_init_map_vars.c \
 	mx_init_signals.c \
-	mx_exec_copy_argv.c \
 	mx_oldpwd.c \
 	mx_built_in.c \
 	mx_unset_var.c \
