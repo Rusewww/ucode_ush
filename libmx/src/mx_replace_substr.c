@@ -1,22 +1,29 @@
 #include "libmx.h"
 
-char *mx_replace_substr(const char *str, const char *sub,
-                        const char *replace) {
-    int subs = mx_count_substr(str, sub);
-    int subs_length = mx_strlen(sub) * subs;
-    int replace_length = mx_strlen(replace) * subs;
-    char *result = NULL;
-    int index = 0;
-
-    if (!*str || !*sub) {
-        return NULL;
+char *mx_replace_substr(const char *str, const char *sub, const char *replace) {
+    if (str == NULL || sub == NULL || replace == NULL) return NULL;
+    char *res = NULL;
+    char *prev = res;
+    char *cur = NULL;
+    int sub_len = mx_strlen(sub);
+    int sub_idx = 0;
+    while (str != NULL) {
+        sub_idx = mx_get_substr_index(str, sub);
+        if (sub_idx == -1) {
+            sub_idx = mx_strlen(str);
+        }
+        cur = mx_strndup(str, sub_idx);
+        str = mx_strstr(str, sub);
+        res = mx_strjoin(res, cur);
+        mx_strdel(&cur);
+        mx_strdel(&prev);
+        if (str == NULL) break;
+        prev = res;
+        res = mx_strjoin(res, replace);
+        mx_strdel(&prev);
+        prev = res;
+        if (*(str + sub_len) == '\0') break;
+        if (str != NULL) str += sub_len;
     }
-    result = mx_strnew(mx_strlen(str) - subs_length + replace_length);
-    while ((index = mx_get_substr_index(str, sub)) != -1) {
-        mx_strncat(result, str, index);
-        mx_strcat(result, replace);
-        str += index + mx_strlen(sub);
-    }
-    mx_strcat(result, str);
-    return result;
+    return res;
 }

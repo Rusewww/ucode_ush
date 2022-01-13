@@ -1,14 +1,7 @@
 #include "libmx.h"
 
 int mx_get_substr_index(const char *str, const char *sub) {
-    char *result = NULL;
-    
-    if (!str || !sub) {
-        return -2;
-    }
-    result = mx_strstr(str, sub);
-    if (result) {
-        return result - str;
-    }
-    return -1;
+    if (str == NULL || sub == NULL) return -2;
+    char *ptr_in_str = mx_strstr(str, sub);
+    return ptr_in_str == NULL ? -1 : ptr_in_str - str;
 }

@@ -1,23 +1,27 @@
 #include "libmx.h"
 
-static bool isvalid_char(char c) {
-    return mx_isspace(c) || c == '-' || c == '+';
-}
-
 int mx_atoi(const char *str) {
-    int result = 0;
-    int i = 0;
-    int sign = 0;
-
-    while (!mx_isdigit(str[i])) {
-        if (!isvalid_char(str[i]))
-            return 0;
-        i++;
+    long out = 0;
+    while (*str == ' ') {
+        str++;
     }
-    sign = str[i - 1] == '-' ? -1 : 1;
-    while (mx_isdigit(str[i])) {
-        result = result * 10 + (str[i] - '0');
-        i++;
+    int minus = str[0] == '-' ? -1 : 1;
+    if (str[0] == '+') str++;
+    for (int i = minus < 0; mx_isdigit(str[i]); i++) {
+        if (minus > 0) {
+            if (out + (str[i] - '0') < 0) {
+                return -1;
+            }
+            out += str[i] - '0';
+        } else {
+            if (out - (str[i] - '0') > 0) {
+                return 0;
+            }
+            out -= str[i] - '0';
+        }
+        if (mx_isdigit(str[i + 1])) {
+            out *= 10;
+        }
     }
-    return result * sign;
+    return (int) out;
 }
