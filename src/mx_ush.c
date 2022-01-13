@@ -4,9 +4,9 @@ bool check_stdin(int *exit_code) {
     char *buff = NULL;
     size_t linecap = 0;
     ssize_t linelen = 0;
-
-    if (isatty(STDIN_FILENO))
+    if (isatty(STDIN_FILENO)) {
         return false;
+    }
     buff = mx_strnew(ARG_MAX + 1);
     while ((linelen = getline(&buff, &linecap, stdin)) > 0) {
         buff[linelen] = '\0';
