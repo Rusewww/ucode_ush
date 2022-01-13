@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
     while (res != -1) {
         mx_get_in(prompt, fd, &res);
         dprintf(fd, "\r\n");
-        mx_handle_command(prompt->command, &res);
+        mx_handle_cmnd(prompt->command, &res);
     }
     if (fd != 1 && fd != 2) {
         close(fd);
