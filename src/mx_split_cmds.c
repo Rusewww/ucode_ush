@@ -1,5 +1,25 @@
 #include "../inc/ush.h"
 
+t_list *mx_split_cmds(char *command) {
+    t_list *result = NULL;
+    unsigned int save = 0;
+
+    for (unsigned int i = 0; i < strlen(command); i++) {
+        mx_skip_quotes(command, &i, MX_D_QUOTES);
+        mx_skip_quotes(command, &i, MX_S_QUOTES);
+        if (isspace(command[i]) && !mx_isescape_char(command, i)) {
+            save++;
+            continue;
+        }
+        if (!command[i + 1] || (isspace(command[i + 1])
+                                && !mx_isescape_char(command, i + 1))) {
+            mx_push_back(&result, strndup(command + save, i - save + 1));
+            save = i + 1;
+        }
+    }
+    return result;
+}
+
 static int get_next_command(char *command) {
     unsigned int i = 0;
     while (i < strlen(command)) {
@@ -37,7 +57,7 @@ static t_list *split(char *command) {
     return commands;
 }
 
-char **mx_split_commands(char *command) {
+char **mx_split_cmds(char *command) {
     t_list *commands = split(command);
     size_t size = mx_list_size(commands);
     char **cmds = malloc(sizeof(char *) * (size + 1));

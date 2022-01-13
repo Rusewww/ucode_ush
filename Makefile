@@ -17,7 +17,6 @@ SRC = mx_ush.c \
 	mx_del_node_list.c \
 	mx_color.c \
 	mx_replace_substitution.c \
-	mx_split_command.c \
 	mx_replace_tilde.c \
 	mx_pre_interpret.c \
 	mx_get_in.c \
@@ -38,7 +37,7 @@ SRC = mx_ush.c \
 	mx_handle_cursor.c \
 	mx_interpretate.c \
 	mx_home.c \
-	mx_split_commands.c \
+	mx_split_cmds.c \
 	mx_handle_command.c \
 	mx_parse_path.c \
 	mx_init_var_lists.c \

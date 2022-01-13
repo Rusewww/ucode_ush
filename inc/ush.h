@@ -73,7 +73,6 @@ void mx_rcmd(char *dst, char *src, size_t size, unsigned int *index);
 char *mx_str_prompt(void);
 void mx_handle_cursor(t_prompt *prompt);
 char **mx_interpretate(char *command, int *code);
-char **mx_split_commands(char *command);
 void mx_print_sh_error(char *process, char *message);
 void mx_handle_command(char *command, int *code);
 void mx_print_var_list(t_var_list key, int fd);
@@ -93,7 +92,6 @@ bool mx_remove_subchar(char *substitution);
 char **mx_parse_command(char *command, int *code);
 int mx_exec_command(char **argv, int fd);
 char *mx_replace_tilde(char *arg);
-t_list *mx_split_command(char *command);
 bool mx_find_command(char *path, char *command, char **filename);
 char *mx_replace_substitution(char *arg, int *code);
 bool mx_get_sub(char *arg, char *sub, int *code);
@@ -183,6 +181,11 @@ void mx_skip_grave(char *cmnd, unsigned int *i);
 void mx_skip_exp(char *cmnd, unsigned int *i);
 void mx_skip_exps_quotes(char *arg, unsigned int *index, bool *quote);
 void mx_skip_quotes_if(bool *quote, char *arg, unsigned int *i);
+
+//mx_split_cmds
+
+char **mx_split_cmds(char *command);
+t_list *mx_split_cmds(char *command);
 
 
 #endif
