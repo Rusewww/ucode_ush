@@ -1,4 +1,5 @@
-#pragma once
+#ifndef USH
+#define USH
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -337,3 +338,4 @@ int mx_fg(char **args, int fd);
 
 bool mx_check_dir_exists(char *dir);
 
+#endif

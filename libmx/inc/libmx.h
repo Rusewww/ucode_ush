@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LIBMX
+#define LIBMX
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -110,3 +111,5 @@ void mx_printerr(const char *s);
 void mx_printchar(char c);
 void mx_print_strarr(char **arr, const char *delim);
 bool mx_isalpha(const char c);
+
+#endif
