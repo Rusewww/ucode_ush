@@ -77,7 +77,6 @@ SRC = mx_ush.c \
 	mx_init_signals.c \
 	mx_exec_copy_argv.c \
 	mx_oldpwd.c \
-	mx_clear_slash_end.c \
 	mx_built_in.c \
 	mx_unset_var.c \
 	mx_change_map.c \
