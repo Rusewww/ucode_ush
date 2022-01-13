@@ -43,7 +43,7 @@ void mx_skip_quotes_s(char *cmnd, unsigned int *i) {
 void mx_skip_grave(char *cmnd, unsigned int *i) {
     if (cmnd[*i] == MX_GRAVE_ACCENT && !mx_isescape_char(cmnd, *i)) {
         (*i)++;
-        for (; cmnd[*i]; (*i)++;) {
+        for (; cmnd[*i]; (*i)++) {
             if (cmnd[*i] == MX_GRAVE_ACCENT
                 && !mx_isescape_char(cmnd, *i)) {
                 break;
