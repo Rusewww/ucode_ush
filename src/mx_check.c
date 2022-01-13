@@ -81,7 +81,7 @@ bool mx_check_substitutions(char *c) {
     return !g_quotes;
 }
 
-int mx_preinterpretate(char *command) {
+int mx_pre_interpret(char *command) {
     int res = 0;
     if (!(res = mx_check_quotes(command))) {
         fprintf(stderr, "%s: missing terminating character\n", MX_SHELL_NAME);
