@@ -8,7 +8,7 @@ bool mx_check_quotes(char *c) {
     while (i < length) {
         if (!s_quotes) {
             mx_skip_quotes(c, &i, MX_GRAVE_ACCENT);
-            mx_skip_expansion(c, &i);
+            mx_skip_exp(c, &i);
         }
         if (c[i] == MX_D_QUOTES && !mx_isescape_char(c, i) && !s_quotes) {
             d_quotes = !d_quotes;
@@ -72,7 +72,7 @@ bool mx_check_substitutions(char *c) {
     unsigned int i = 0;
     while (i < length) {
         mx_skip_quotes(c, &i, MX_S_QUOTES);
-        mx_skip_expansion(c, &i);
+        mx_skip_exp(c, &i);
         if (c[i] == MX_GRAVE_ACCENT && !mx_isescape_char(c, i)) {
             g_quotes = !g_quotes;
         }
