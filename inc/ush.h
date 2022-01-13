@@ -165,8 +165,6 @@ void mx_delete_names(char **name1, char **name2, t_list *node);
 
 bool mx_check_semicolons(char **commands, int *code);
 
-bool mx_check_brackets(char *command);
-
 bool mx_issubstitution(char *arg);
 
 int mx_exec(t_process *process, char *filename, char **argv, char **env);
@@ -337,5 +335,9 @@ char **mx_source(char *str);
 int mx_fg(char **args, int fd);
 
 bool mx_check_dir_exists(char *dir);
+
+
+
+bool mx_check_parentheses(char *c);
 
 #endif
