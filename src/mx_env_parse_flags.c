@@ -66,7 +66,7 @@ int mx_env_parse_flags(char **argv, char **path, int *idx) {
     for (*idx = 0; argv[*idx] && !stop && !rval;) {
         if (argv[*idx][0] == '-' && strcmp(argv[*idx], "--") != 0) {
             if (mx_match(argv[*idx], MX_ENV_FLAG_I)) {
-                mx_clearenv();
+                mx_clear_env();
 
             }
             rval = parse_flag(&argv[*idx], path, idx);
