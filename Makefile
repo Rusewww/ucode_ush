@@ -49,7 +49,6 @@ SRC = mx_ush.c \
 	mx_cd.c \
 	mx_issubstitution.c \
 	mx_exec.c \
-	mx_env_exec.c \
 	mx_create_process.c \
 	mx_handle_substitution.c \
 	mx_remove_subchar.c \
@@ -58,13 +57,10 @@ SRC = mx_ush.c \
 	mx_make_null_index.c \
 	mx_source.c \
 	mx_put_pwd.c \
-	mx_env_copy.c \
 	mx_exec_command.c \
 	mx_find_command.c \
 	mx_del_process.c \
 	mx_putenv.c \
-	mx_clear_env.c \
-	mx_env_fill.c \
 	mx_print_env_error.c \
 	mx_env_parse_vars.c \
 	mx_env_parse_flags.c \

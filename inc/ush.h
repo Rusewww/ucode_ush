@@ -81,7 +81,6 @@ char *mx_replace_escape(char *arg, char *escape, char new, bool in_q);
 char *mx_replace_env(char *arg, int *code);
 bool mx_issubstitution(char *arg);
 int mx_exec(t_process *process, char *filename, char **argv, char **env);
-int mx_env_exec(t_process *process, char *filename, char **argv, char **env);
 char **mx_exec_copy_argv(char **argv);
 t_process *mx_create_process(int fd);
 void mx_del_process(t_process **process);
@@ -121,10 +120,8 @@ char **mx_make_null_index(char **split, int index);
 void mx_increment_shlvl(void);
 int mx_unset_var(char *var);
 void mx_put_pwd(char *pwd, char *oldpwd);
-char **mx_env_copy(void);
 int mx_print_env_error(char option, char *err_arg, int error);
 void mx_putenv(char *var);
-void mx_env_fill(char **src);
 void mx_env_parse_vars(char **argv, char **path, int *idx);
 int mx_env_parse_flags(char **argv, char **path, int *idx);
 void mx_oldpwd(char *newdir, t_map **map, int fd);
@@ -139,7 +136,6 @@ int mx_unset(char **args);
 int mx_export(char **args, int fd);
 int mx_pwd(char **flags, int fd);
 int mx_which(char **args, int fd);
-int mx_env(char **argv, int fd);
 char **mx_source(char *str);
 int mx_fg(char **args, int fd);
 
@@ -193,8 +189,13 @@ void mx_change_map(t_map **map, char *dir);
 
 bool mx_check_escape(char *cmnd);
 
-//mx_clear_env
+//mx_env
 
 void mx_clear_env(void);
+int mx_env(char **argv, int fd);
+char **mx_env_copy(void);
+int mx_env_exec(t_process *process, char *name, char **argv, char **env);
+void mx_env_fill(char **src);
+
 
 #endif
