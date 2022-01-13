@@ -31,6 +31,8 @@
 #include <libgen.h>
 #include <wordexp.h>
 
+#define MX_SHELL_NAME "ush"
+
 typedef struct s_list
 {
     void *data;

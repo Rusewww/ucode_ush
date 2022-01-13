@@ -3,7 +3,6 @@
 
 #include "inc/libmx.h"
 
-#define MX_SHELL_NAME "ush"
 #define MX_SHELL_PROMPT "u$h> "
 #define DEFAULT_PATH "PATH=/bin:/usr/bin:/usr/local/bin:/usr/sbin:/sbin"
 #define MX_UP_ARROW "\x1b\x5b\x41"
