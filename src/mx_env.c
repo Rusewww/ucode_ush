@@ -136,7 +136,7 @@ int mx_env_exec(t_process *process, char *name, char **argv, char **env) {
 void mx_env_fill(char **src) {
     int i = 0;
     while (src && src[i]) {
-        mx_putenv(src[i]);
+        mx_put_env(src[i]);
         i++;
     }
 }
