@@ -133,7 +133,6 @@ void mx_init_var_lists(void);
 void mx_init_map_vars(void);
 void mx_init_signals(void);
 void mx_deinit(void);
-char *mx_parse_path(char *pwd, char *newdir, t_map **map);
 char **mx_make_null_index(char **split, int index);
 bool mx_is_builtin(char *command);
 bool mx_builtin_which(char *file, int *mode);
@@ -184,12 +183,5 @@ void mx_change_dir(char *new_dir, t_map **map, int dir);
 void mx_cd_flags(char *flag, t_map **map, char *new_dir);
 void mx_flag_p_slash(char *nd, t_map **map);
 void mx_flag_p_path(t_map **map, char *new_dir);
-
-//mx_check
-
-bool mx_check_colons(char **cmnd, int *code);
-void mx_check_s_slash(char *dir, t_map **map);
-bool mx_check_exists(char *dir);
-
 
 #endif

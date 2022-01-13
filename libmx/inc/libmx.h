@@ -143,4 +143,10 @@ struct termios *mx_get_tty(void);
 t_map **mx_get_lenv(void);
 t_list **mx_get_list_procs(void);
 
+bool mx_check_colons(char **cmnd, int *code);
+void mx_check_s_slash(char *dir, t_map **map);
+bool mx_check_exists(char *dir);
+
+char *mx_parse_path(char *path, char *new_dir, t_map **map);
+
 #endif

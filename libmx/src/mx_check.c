@@ -1,4 +1,4 @@
-#include "../inc/ush.h"
+#include "../inc/libmx.h"
 
 bool mx_check_exists(char *dir) {
     if (chdir(dir) < 0) {
