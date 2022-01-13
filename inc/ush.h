@@ -98,13 +98,11 @@ void mx_init_map_vars(void);
 void mx_init_signals(void);
 void mx_deinit(void);
 char **mx_make_null_index(char **split, int index);
-void mx_increment_shlvl(void);
 int mx_unset_var(char *var);
 void mx_put_pwd(char *pwd, char *oldpwd);
 int mx_print_env_error(char option, char *err_arg, int error);
 void mx_putenv(char *var);
 void mx_oldpwd(char *newdir, t_map **map, int fd);
-void mx_home(t_map **map);
 void mx_pop_process(int id);
 int mx_get_process_id_by_pid(pid_t pid);
 pid_t mx_get_process_pid_by_id(int id);
@@ -230,5 +228,12 @@ bool mx_handle_his(t_prompt *prompt);
 void mx_handle_print_char(t_prompt *prompt);
 t_list *mx_handle_subs(t_list *arg);
 
+//mx_home
+
+void mx_home(t_map **map);
+
+//mx_increase_sh_lvl
+
+void mx_increase_sh_lvl(void);
 
 #endif

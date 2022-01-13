@@ -58,7 +58,7 @@ SRC = mx_ush.c \
 	mx_exit.c \
 	mx_env.c \
 	mx_fg.c \
-	mx_increment_shlvl.c \
+	mx_increase_sh_lvl.c \
 	mx_init_map_vars.c \
 	mx_init_signals.c \
 	mx_oldpwd.c \
