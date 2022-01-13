@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     }
     mx_init();
     if (check_stdin(&exit_code)) {
-        mx_deinit();
+        mx_de_init();
         exit(exit_code);
     }
     int res = 0;
@@ -29,6 +29,6 @@ int main(int argc, char **argv) {
     }
     mx_d_del_list(&prompt->history_head);
     free(prompt);
-    mx_deinit();
+    mx_de_init();
     return 0;
 }
