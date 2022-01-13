@@ -8,7 +8,7 @@ void mx_skip_exps_quotes(char *arg, unsigned int *index, bool *quote) {
         mx_skip_quotes(arg, index, MX_S_QUOTES);
     }
     mx_skip_quotes(arg, index, MX_GRAVE_ACCENT);
-    mx_skip_expansion(arg, index);
+    mx_skip_exp(arg, index);
 }
 
 bool mx_replace_env_var(char *res, char *env, unsigned int *index, unsigned int length) {

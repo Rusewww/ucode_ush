@@ -1,7 +1,7 @@
 #ifndef USH
 #define USH
 
-#include "inc/libmx.h"
+#include "../libmx/inc/libmx.h"
 
 #define MX_SHELL_PROMPT "u$h> "
 #define DEFAULT_PATH "PATH=/bin:/usr/bin:/usr/local/bin:/usr/sbin:/sbin"
