@@ -34,7 +34,7 @@ bool check_stdin(int *exit_code) {
         if (buff[linelen - 1] == '\n') {
             buff[linelen - 1] = '\0';
         }
-        mx_handle_command(buff, exit_code);
+        mx_handle_cmnd(buff, exit_code);
     }
     mx_strdel(&buff);
     return true;
