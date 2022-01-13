@@ -164,6 +164,8 @@ int mx_env(char **argv, int fd);
 char **mx_source(char *str);
 int mx_fg(char **args, int fd);
 
+char *mx_parse_path(char *path, char *new_dir, t_map **map);
+
 //mx_pre_interpret
 
 bool mx_check_parentheses(char *c);
@@ -183,5 +185,6 @@ void mx_change_dir(char *new_dir, t_map **map, int dir);
 void mx_cd_flags(char *flag, t_map **map, char *new_dir);
 void mx_flag_p_slash(char *nd, t_map **map);
 void mx_flag_p_path(t_map **map, char *new_dir);
+void mx_check_s_slash(char *dir, t_map **map);
 
 #endif
