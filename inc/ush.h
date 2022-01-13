@@ -95,8 +95,6 @@ t_process *mx_create_process(int fd);
 void mx_del_process(t_process **process);
 t_list *mx_handle_substitution(t_list *arguments);
 bool mx_remove_subchar(char *substitution);
-void mx_skip_expansion(char *command, unsigned int *i);
-void mx_skip_quotes(char *command, unsigned int *i, char c);
 char **mx_parse_command(char *command, int *code);
 void mx_var_list_delete(t_var_list key, char *del_name);
 int mx_exec_command(char **argv, int fd);
@@ -184,5 +182,13 @@ void mx_cd_flags(char *flag, t_map **map, char *new_dir);
 void mx_flag_p_slash(char *nd, t_map **map);
 void mx_flag_p_path(t_map **map, char *new_dir);
 void mx_check_s_slash(char *dir, t_map **map);
+
+//mx_skip
+
+void mx_skip_quotes(char *cmnd, unsigned int *i, char c);
+void mx_skip_quotes_s(char *cmnd, unsigned int *i);
+void mx_skip_grave(char *cmnd, unsigned int *i);
+void mx_skip_exp(char *cmnd, unsigned int *i);
+
 
 #endif

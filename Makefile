@@ -57,8 +57,7 @@ SRC = mx_ush.c \
 	mx_create_process.c \
 	mx_handle_substitution.c \
 	mx_remove_subchar.c \
-	mx_skip_expansion.c \
-	mx_skip_quotes.c \
+	mx_skip.c \
 	mx_parse_command.c \
 	mx_var_list_delete.c \
 	mx_make_null_index.c \
