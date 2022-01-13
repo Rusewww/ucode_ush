@@ -117,8 +117,6 @@ void mx_handle_cursor(t_prompt *prompt);
 
 char **mx_interpretate(char *command, int *code);
 
-bool mx_check_quotes(char *command);
-
 char **mx_split_commands(char *command);
 
 void mx_print_sh_error(char *process, char *message);
@@ -186,8 +184,6 @@ void mx_skip_expansion(char *command, unsigned int *i);
 void mx_skip_quotes(char *command, unsigned int *i, char c);
 
 char **mx_parse_command(char *command, int *code);
-
-bool mx_check_substitutions(char *command);
 
 void mx_var_list_delete(t_var_list key, char *del_name);
 
@@ -338,5 +334,7 @@ bool mx_check_dir_exists(char *dir);
 
 bool mx_check_parentheses(char *c);
 bool mx_check_char(char *c);
+bool mx_check_substitutions(char *c);
+bool mx_check_quotes(char *c);
 
 #endif

@@ -40,7 +40,6 @@ SRC = mx_ush.c \
 	mx_str_prompt.c \
 	mx_handle_cursor.c \
 	mx_interpretate.c \
-	mx_check_quotes.c \
 	mx_home.c \
 	mx_flag_p_slash.c \
 	mx_split_commands.c \
@@ -61,7 +60,6 @@ SRC = mx_ush.c \
 	mx_delete_names.c \
 	mx_echo.c \
 	mx_check_semicolons.c \
-	mx_check_substitutions.c \
 	mx_cd.c \
 	mx_issubstitution.c \
 	mx_exec.c \
