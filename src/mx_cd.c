@@ -44,7 +44,7 @@ static int flag_s(t_map **map, char *new_dir) {
     if (new_dir == NULL) {
         mx_change_dir(NULL, map, 1);
     } else if (new_dir[0] == '/') {
-        if (mx_check_dir_exists(new_dir) == false) {
+        if (mx_check_exists(new_dir) == false) {
             fprintf(stderr, "cd: %s: No such file or directory\n", new_dir);
             return 0;
         }
@@ -85,7 +85,7 @@ void mx_flag_p_slash(char *nd, t_map **map) {
         mx_change_dir(nd, map, 1);
     } else if (nd[0] == '/') {
         char *str = realpath(nd, NULL);
-        if (mx_check_dir_exists(nd) == false) {
+        if (mx_check_exists(nd) == false) {
             fprintf(stderr, "cd: %s: No such file or directory\n", nd);
             mx_strdel(&str);
         } else if (strcmp(nd, str) == 0) {
