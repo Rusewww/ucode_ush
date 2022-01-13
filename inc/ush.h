@@ -93,9 +93,6 @@ char *mx_check_user_file(char *tmp_name);
 bool mx_check_user(char *user_name);
 bool mx_check_trimmed_str(char *sub_trimmed, char *sub);
 void mx_init(void);
-void mx_init_var_lists(void);
-void mx_init_map_vars(void);
-void mx_init_signals(void);
 void mx_deinit(void);
 char **mx_make_null_index(char **split, int index);
 int mx_unset_var(char *var);
@@ -235,5 +232,11 @@ void mx_home(t_map **map);
 //mx_increase_sh_lvl
 
 void mx_increase_sh_lvl(void);
+
+//mx_init
+
+void mx_init_var_ls(void);
+void mx_init_signals(void);
+void mx_init_map_v(void);
 
 #endif

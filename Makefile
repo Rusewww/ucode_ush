@@ -33,7 +33,6 @@ SRC = mx_ush.c \
 	mx_split_cmds.c \
 	mx_handle.c \
 	mx_parse_path.c \
-	mx_init_var_lists.c \
 	mx_print_var_list.c \
 	mx_check_escape.c \
 	mx_isescape_char.c \
@@ -59,8 +58,7 @@ SRC = mx_ush.c \
 	mx_env.c \
 	mx_fg.c \
 	mx_increase_sh_lvl.c \
-	mx_init_map_vars.c \
-	mx_init_signals.c \
+	mx_init.c \
 	mx_oldpwd.c \
 	mx_built_in.c \
 	mx_unset_var.c \
