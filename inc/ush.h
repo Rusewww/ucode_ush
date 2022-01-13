@@ -113,9 +113,7 @@ void mx_home(t_map **map);
 void mx_pop_process(int id);
 int mx_get_process_id_by_pid(pid_t pid);
 pid_t mx_get_process_pid_by_id(int id);
-int mx_exit(char **args);
 int mx_unset(char **args);
-int mx_export(char **args, int fd);
 int mx_pwd(char **flags, int fd);
 int mx_which(char **args, int fd);
 char **mx_source(char *str);
@@ -217,6 +215,19 @@ int mx_exec_command(char **argv, int fd);
 char **mx_exec_copy_argv(char **argv);
 char **mx_exec_copy_argv(char **argv);
 void mx_exec_fork(char **arguments, int fd);
+
+//mx_exit
+
+int mx_exit(char **args);
+
+//mx_export
+
+int mx_export(char **args, int fd);
+
+//mx_fg
+
+int mx_fg(char **args, int fd);
+
 
 
 #endif

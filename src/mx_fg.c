@@ -1,6 +1,6 @@
 #include "../inc/ush.h"
 
-static t_list *get_process_by_cmd(char *arg, t_list *proc) {
+static t_list *get_by_cmd(char *arg, t_list *proc) {
     t_list *ret = NULL;
     unsigned int count = 0;
     t_process *tmp = NULL;
@@ -22,7 +22,7 @@ static t_list *get_process_by_cmd(char *arg, t_list *proc) {
     return NULL;
 }
 
-static t_list *get_process_by_id(char *arg, t_list *proc) {
+static t_list *get_by_id(char *arg, t_list *proc) {
     int cur = atoi(arg);
     t_process *tmp = NULL;
 
@@ -36,7 +36,7 @@ static t_list *get_process_by_id(char *arg, t_list *proc) {
     return NULL;
 }
 
-static t_list *get_process(char *arg) {
+static t_list *get(char *arg) {
     bool is_num = true;
     unsigned int lenght = 0;
     t_list **proc = mx_get_list_procs();
@@ -52,9 +52,9 @@ static t_list *get_process(char *arg) {
         }
     }
     if (is_num) {
-        return get_process_by_id(arg, *proc);
+        return get_by_id(arg, *proc);
     } else {
-        return get_process_by_cmd(arg, *proc);
+        return get_by_cmd(arg, *proc);
     }
 }
 
@@ -77,11 +77,10 @@ int mx_fg(char **args, int fd) {
     t_list *process = NULL;
     t_process *process_F_to_pay_respect = NULL;
     t_list **all = mx_get_list_procs();
-
     if (!check_args(args)) {
         return 1;
     }
-    process = get_process(args[0]);
+    process = get(args[0]);
     if (process) {
         process_F_to_pay_respect = (t_process *) process->data;
         mx_disable_canon();

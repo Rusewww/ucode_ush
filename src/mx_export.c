@@ -14,13 +14,13 @@ static bool parse_error(char *arg) {
     return 1;
 }
 
-static void add_var_to_lists(char *arg) {
+static void add_to_lists(char *arg) {
     mx_var_list_insert(SHELL, arg);
     mx_var_list_insert(EXP, arg);
     mx_strdel(&arg);
 }
 
-static void export_var_to_lists(char *arg) {
+static void export_to_lists(char *arg) {
     t_list **s_list = mx_get_var_list(SHELL);
     t_list *cur = *s_list;
     char *a_name = NULL;
@@ -40,7 +40,7 @@ static void export_var_to_lists(char *arg) {
         }
     }
     if (!cur) {
-        add_var_to_lists(mx_strjoin(arg, "="));
+        add_to_lists(mx_strjoin(arg, "="));
     }
     mx_delete_names(&v_name, &a_name, NULL);
 }
@@ -48,7 +48,6 @@ static void export_var_to_lists(char *arg) {
 
 int mx_export(char **args, int fd) {
     bool stop = 0;
-
     if (args[0] == NULL) {
         mx_print_var_list(EXP, fd);
     } else {
@@ -56,10 +55,10 @@ int mx_export(char **args, int fd) {
         while (args[i] && !stop) {
             if (mx_match(args[i], MX_EXPORT_ARG)) {
                 if (!mx_match(args[i], "=")) {
-                    export_var_to_lists(args[i]);
+                    export_to_lists(args[i]);
                 } else {
                     mx_putenv(args[i]);
-                    add_var_to_lists(strdup(args[i]));
+                    add_to_lists(strdup(args[i]));
                 }
             } else {
                 stop = parse_error(args[i]);
