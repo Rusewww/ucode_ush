@@ -31,7 +31,7 @@ static void export_to_lists(char *arg) {
         mx_get_name(cur->data, &v_name);
         if (strcmp(a_name, v_name) == 0) {
             mx_var_list_insert(EXP, cur->data);
-            mx_putenv(cur->data);
+            mx_put_env(cur->data);
             break;
         }
         cur = cur->next;
@@ -57,7 +57,7 @@ int mx_export(char **args, int fd) {
                 if (!mx_match(args[i], "=")) {
                     export_to_lists(args[i]);
                 } else {
-                    mx_putenv(args[i]);
+                    mx_put_env(args[i]);
                     add_to_lists(strdup(args[i]));
                 }
             } else {
