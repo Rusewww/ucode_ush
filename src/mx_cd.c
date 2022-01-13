@@ -4,7 +4,7 @@ static bool check_path(t_map **map, char *new_dir) {
     char *path = mx_strnew(mx_strlen(mx_get_map(map, "PWD")) + 1 + mx_strlen(new_dir));
     char *real_path;
     bool result = false;
-    if (mx_check_dir_exists(new_dir) == false) {
+    if (mx_check_exists(new_dir) == false) {
         mx_strdel(&path);
         return false;
     }
