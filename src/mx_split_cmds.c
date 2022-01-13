@@ -57,7 +57,7 @@ static t_list *split(char *command) {
     return commands;
 }
 
-char **mx_split_cmds(char *command) {
+char **mx_split_commands(char *command) {
     t_list *commands = split(command);
     size_t size = mx_list_size(commands);
     char **cmds = malloc(sizeof(char *) * (size + 1));
