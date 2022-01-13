@@ -14,7 +14,7 @@ static char **get_sort(void) {
     int len = 0;
 
     if (*environ == NULL) {
-        mx_putenv("SHLVL=0");
+        mx_put_env("SHLVL=0");
     }
     while (environ[len]) {
         len++;
@@ -100,14 +100,14 @@ void mx_init_var_ls(void) {
 }
 
 void mx_init(void) {
-    mx_putenv("MX_PROMPT=u$h> ");
+    mx_put_env("MX_PROMPT=u$h> ");
     mx_init_var_ls();
     mx_init_map_v();
     mx_increase_sh_lvl();
     if (getenv("HOME") == NULL) {
         struct passwd *pw = getpwuid(getuid());
         char *home = mx_strjoin("HOME=", pw->pw_dir);
-        mx_putenv(home);
+        mx_put_env(home);
         mx_var_list_insert(SHELL, home);
         mx_strdel(&home);
     }
