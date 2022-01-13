@@ -62,8 +62,7 @@ SRC = mx_ush.c \
 	mx_del_process.c \
 	mx_putenv.c \
 	mx_print_env_error.c \
-	mx_env_parse_vars.c \
-	mx_env_parse_flags.c \
+	mx_env_parse.c \
 	mx_replace_sub.c \
 	mx_exit.c \
 	mx_env.c \

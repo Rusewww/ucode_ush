@@ -24,7 +24,7 @@ static void delete_var(char **dname) {
     }
 }
 
-static void env_check_delname(char *dname, int *rval) {
+static void env_check_del_name(char *dname, int *rval) {
     if (!(*rval)) {
         *rval = mx_match(dname, "=");
         if (*rval) {
@@ -43,10 +43,9 @@ int parse_flag(char **args, char **path, int *idx) {
             }
             *path = get_flag_arg(args, &i, &retval, idx);
         } else if (args[0][i] == 'u') {
-            char *delname = get_flag_arg(args, &i, &retval, idx);
-
-            env_check_delname(delname, &retval);
-            delete_var(&delname);
+            char *del_name = get_flag_arg(args, &i, &retval, idx);
+            env_check_del_name(del_name, &retval);
+            delete_var(&del_name);
         } else if (args[0][i] != 'i' && args[0][i] != '-') {
             return mx_print_env_error(args[0][i], NULL, 0);
         }
@@ -58,11 +57,10 @@ int parse_flag(char **args, char **path, int *idx) {
     return retval;
 }
 
-int mx_env_parse_flags(char **argv, char **path, int *idx) {
+int mx_env_flags_parse(char **argv, char **path, int *idx) {
     int rval = 0;
     bool stop = false;
     extern char **environ;
-
     for (*idx = 0; argv[*idx] && !stop && !rval;) {
         if (argv[*idx][0] == '-' && strcmp(argv[*idx], "--") != 0) {
             if (mx_match(argv[*idx], MX_ENV_FLAG_I)) {
@@ -80,3 +78,29 @@ int mx_env_parse_flags(char **argv, char **path, int *idx) {
     }
     return rval;
 }
+
+void mx_env_vars_parse(char **argv, char **path, int *idx) {
+    char *name = NULL;
+    bool repl = false;
+    while (argv[*idx]) {
+        if (mx_match(argv[*idx], MX_ENV_VAR)) {
+            mx_get_name(argv[*idx], &name);
+            mx_putenv(argv[*idx]);
+            if (!strcmp(name, "PATH") && (!(*path) || repl)) {
+                repl = true;
+                if (*path) {
+                    mx_strdel(path);
+                }
+                *path = mx_get_var_info(argv[*idx], 1);
+            }
+        } else {
+            break;
+        }
+        (*idx)++;
+    }
+    if (!(*path) && mx_get_var_val(SHELL, "PATH")) {
+        *path = strdup(mx_get_var_val(SHELL, "PATH"));
+    }
+    mx_strdel(&name);
+}
+
