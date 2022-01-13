@@ -85,8 +85,6 @@ typedef struct s_prompt {
     char tmp_command[ARG_MAX + 1];
 } t_prompt;
 
-void mx_get_input(t_prompt *prompt, int fd, int *code);
-
 struct termios *mx_get_tty(void);
 
 void mx_enable_canon(void);
@@ -328,12 +326,16 @@ int mx_fg(char **args, int fd);
 
 bool mx_check_dir_exists(char *dir);
 
-
+//mx_pre_interpret
 
 bool mx_check_parentheses(char *c);
 bool mx_check_char(char *c);
 bool mx_check_substitutions(char *c);
 bool mx_check_quotes(char *c);
 int mx_pre_interpret(char *c);
+
+//mx_getters
+
+void mx_get_in(t_prompt *prompt, int fd, int *code);
 
 #endif
