@@ -1,6 +1,6 @@
 #include "../inc/ush.h"
 
-t_list *mx_split_cmds(char *command) {
+t_list *mx_split_cmd(char *command) {
     t_list *result = NULL;
     unsigned int save = 0;
 
