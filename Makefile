@@ -48,12 +48,10 @@ SRC = mx_ush.c \
 	mx_init_var_lists.c \
 	mx_print_var_list.c \
 	mx_var_list_insert.c \
-	mx_get_var_info.c \
 	mx_check_escape.c \
 	mx_isescape_char.c \
 	mx_replace_escape.c \
 	mx_replace_env.c \
-	mx_get_name.c \
 	mx_delete_names.c \
 	mx_echo.c \
 	mx_check_semicolons.c \

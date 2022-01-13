@@ -46,3 +46,27 @@ char *mx_get_var_val(t_var_list key, char *var) {
     }
     return (char *) (cur->data) + length;
 }
+
+char *mx_get_var_info(char *arg, bool type) {
+    char *out = NULL;
+    if (type == 0) {
+        if (arg[0] == '=') {
+            out = strndup(arg, mx_get_char_index(&arg[1], '='));
+        } else {
+            out = strndup(arg, mx_get_char_index(arg, '='));
+        }
+    } else {
+        out = strdup(arg + mx_get_char_index(arg, '=') + 1);
+    }
+    return out;
+}
+
+void mx_get_name(char *var, char **name) {
+    if (*name != NULL) {
+        mx_strdel(name);
+    }
+    if (var != NULL) {
+        *name = strndup(var, mx_get_char_index(var, '='));
+    }
+}
+
