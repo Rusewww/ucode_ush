@@ -4,12 +4,12 @@ static void get_quoted_sub(int *o_sub, int *c_sub, unsigned int *i, char *arg) {
     for (; arg[*i]; *i += 1) {
         mx_skip_quotes(arg, i, MX_S_QUOTES);
         if (arg[*i] == MX_GRAVE_ACCENT
-            && !mx_isescape_char(arg, *i) && *o_sub == -1) {
+            && !mx_is_escape_char(arg, *i) && *o_sub == -1) {
             *o_sub = *i;
             *i += 1;
             continue;
         }
-        if (arg[*i] == MX_GRAVE_ACCENT && !mx_isescape_char(arg, *i)) {
+        if (arg[*i] == MX_GRAVE_ACCENT && !mx_is_escape_char(arg, *i)) {
             *c_sub = *i;
             *i += 1;
             break;
@@ -27,14 +27,14 @@ static void get_parameter_sub(int *o_sub, int *c_sub, unsigned int *i, char *arg
     for (; arg[*i]; *i += 1) {
         mx_skip_quotes(arg, i, MX_S_QUOTES);
         if (arg[*i] == '$' && arg[*i + 1] == '('
-            && !mx_isescape_char(arg, *i) && *o_sub == -1) {
+            && !mx_is_escape_char(arg, *i) && *o_sub == -1) {
             brace++;
             inc_subs(o_sub, i, 2);
             continue;
         }
-        if (arg[*i] == '(' && !mx_isescape_char(arg, *i))
+        if (arg[*i] == '(' && !mx_is_escape_char(arg, *i))
             brace++;
-        if (arg[*i] == ')' && !mx_isescape_char(arg, *i)) {
+        if (arg[*i] == ')' && !mx_is_escape_char(arg, *i)) {
             if (brace-- && !brace) {
                 inc_subs(c_sub, i, 1);
                 break;
@@ -44,7 +44,7 @@ static void get_parameter_sub(int *o_sub, int *c_sub, unsigned int *i, char *arg
 }
 
 static char *get_substitution(int *o_sub, int *c_sub, unsigned int *i, char *arg) {
-    if (arg[*i] == MX_GRAVE_ACCENT && !mx_isescape_char(arg, *i)) {
+    if (arg[*i] == MX_GRAVE_ACCENT && !mx_is_escape_char(arg, *i)) {
         get_quoted_sub(o_sub, c_sub, i, arg);
     } else if (arg[*i] == '$' && !mx_isescape_char(arg, *i)) {
         get_parameter_sub(o_sub, c_sub, i, arg);
