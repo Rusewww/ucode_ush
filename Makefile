@@ -34,7 +34,6 @@ SRC = mx_ush.c \
 	mx_parse_path.c \
 	mx_print_var_list.c \
 	mx_check_escape.c \
-	mx_isescape_char.c \
 	mx_replace_escape.c \
 	mx_replace_env.c \
 	mx_echo.c \
