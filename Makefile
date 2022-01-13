@@ -8,7 +8,7 @@ LIBMX = libmx
 
 LBMX = libmx.a
 INC = ush.h
-SRC = *.c
+SRC = *.c \
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \
