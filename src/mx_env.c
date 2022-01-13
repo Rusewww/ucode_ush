@@ -73,7 +73,7 @@ static void de_init(char ***env, char **path, char **name) {
 
 static int exec_process(char *filename, char **argv, int fd) {
     extern char **environ;
-    t_process *process = mx_create_process(fd);
+    t_process *process = mx_create_proc(fd);
     int rval = mx_env_exec(process, filename, argv, environ);
     mx_del_process(&process);
     return rval;
