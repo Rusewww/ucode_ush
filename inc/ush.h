@@ -61,25 +61,8 @@ typedef struct s_prompt {
     char tmp_command[ARG_MAX + 1];
 } t_prompt;
 
-void mx_update_history(t_prompt *prompt);
-char *mx_str_prompt(void);
-void mx_print_sh_error(char *process, char *message);
-void mx_print_var_list(t_var_list key, int fd);
-char *mx_replace_special(char *argument);
-bool mx_find_command(char *path, char *command, char **filename);
-t_process *mx_get_process_by_id(int id);
-void mx_enable_signals(t_process *process);
-void mx_disable_signals(t_process *process);
-bool check_stdin(int *exit_code);
-int mx_unset_var(char *var);
-int mx_print_env_error(char option, char *err_arg, int error);
-void mx_pop_process(int id);
-int mx_get_process_id_by_pid(pid_t pid);
-pid_t mx_get_process_pid_by_id(int id);
-int mx_unset(char **args);
-int mx_which(char **args, int fd);
-char **mx_source(char *str);
 
+bool mx_find_command(char *path, char *command, char **filename);
 
 //mx_pre_interpret
 
@@ -268,7 +251,29 @@ char *mx_replace_escape(char *arg, char *esc, char new, bool in_q);
 char *mx_replace_env(char *arg, int *code);
 char *mx_get_output_fd(int fd);
 
+//mx_source
 
+char **mx_source(char *str);
 
+//mx_str_prompt
+
+char *mx_str_prompt(void);
+
+//mx_unset
+
+int mx_unset_var(char *var);
+int mx_unset(char **args);
+
+//mx_update_history
+
+void mx_update_history(t_prompt *prompt);
+
+//check_stdin
+
+bool check_stdin(int *exit_code);
+
+//mx_witch
+
+int mx_which(char **args, int fd);
 
 #endif

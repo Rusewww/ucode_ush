@@ -8,7 +8,7 @@ LIBMX = libmx
 
 LBMX = libmx.a
 INC = ush.h
-SRC = mx_ush.c \
+SRC = check_stdin.c \
 	main.c \
 	mx_del_node_list.c \
 	mx_color.c \
@@ -48,7 +48,6 @@ SRC = mx_ush.c \
 	mx_init.c \
 	mx_old_pwd.c \
 	mx_built_in.c \
-	mx_unset_var.c \
 	mx_change_map.c \
 
 INCLUDE = -I $(LBMXD) \
