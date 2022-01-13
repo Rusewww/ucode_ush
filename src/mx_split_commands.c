@@ -6,7 +6,7 @@ static int get_next_command(char *command) {
         mx_skip_quotes(command, &i, MX_GRAVE_ACCENT);
         mx_skip_quotes(command, &i, MX_S_QUOTES);
         mx_skip_quotes(command, &i, MX_D_QUOTES);
-        mx_skip_expansion(command, &i);
+        mx_skip_exp(command, &i);
         if (command[i] == ';') {
             return i;
         }
