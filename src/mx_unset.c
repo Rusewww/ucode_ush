@@ -49,7 +49,7 @@ int mx_unset(char **args) {
         if (mode == 2) {
             unset_all();
         }
-        mx_clearenv();
+        mx_clear_env();
     }
     return res;
 }
