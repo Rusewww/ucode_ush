@@ -150,4 +150,14 @@ bool mx_check_exists(char *dir);
 
 void mx_backspace(unsigned int times, int dir);
 
+void mx_delete_names(char **n_one, char **n_two, t_list *node);
+
+void mx_var_list_push_front(t_list **node, t_list ***list, char **name_one, char **name_two);
+void mx_var_list_replace_var(t_list **list, t_list *node);
+void mx_var_list_push_mid(t_list **list, t_list **node, char *arg_name, char **var_name);
+
+void mx_var_list_insert(t_var_list key, char *arg);
+
+void mx_var_list_delete(t_var_list key, char *del_n);
+
 #endif

@@ -1,4 +1,4 @@
-#include "../inc/ush.h"
+#include "../inc/libmx.h"
 
 static void get_names(char *var_one, char **name_one, char *var_two, char **name_two) {
     mx_get_name(var_one, name_one);

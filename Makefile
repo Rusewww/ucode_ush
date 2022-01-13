@@ -43,12 +43,10 @@ SRC = mx_ush.c \
 	mx_parse_path.c \
 	mx_init_var_lists.c \
 	mx_print_var_list.c \
-	mx_var_list_insert.c \
 	mx_check_escape.c \
 	mx_isescape_char.c \
 	mx_replace_escape.c \
 	mx_replace_env.c \
-	mx_delete_names.c \
 	mx_echo.c \
 	mx_cd.c \
 	mx_issubstitution.c \
@@ -59,7 +57,6 @@ SRC = mx_ush.c \
 	mx_remove_subchar.c \
 	mx_skip.c \
 	mx_parse_command.c \
-	mx_var_list_delete.c \
 	mx_make_null_index.c \
 	mx_source.c \
 	mx_put_pwd.c \
@@ -82,7 +79,6 @@ SRC = mx_ush.c \
 	mx_init_map_vars.c \
 	mx_init_signals.c \
 	mx_exec_copy_argv.c \
-	mx_var_list_insert_func.c \
 	mx_oldpwd.c \
 	mx_clear_slash_end.c \
 	mx_builtin_which.c \

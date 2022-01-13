@@ -1,4 +1,4 @@
-#include "../inc/ush.h"
+#include "../inc/libmx.h"
 
 static void pop_curr_node(t_list **list, t_list **prev, t_list **current) {
     if (*prev == NULL) {
