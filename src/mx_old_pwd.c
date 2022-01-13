@@ -1,6 +1,6 @@
 #include "../inc/ush.h"
 
-void mx_oldpwd(char *new_dir, t_map **map, int fd) {
+void mx_old_pwd(char *new_dir, t_map **map, int fd) {
     char *str = strdup(mx_get_map(map, "OLDPWD"));
     int result = chdir(str);
 

@@ -61,7 +61,6 @@ typedef struct s_prompt {
     char tmp_command[ARG_MAX + 1];
 } t_prompt;
 
-bool mx_match(char *src, char *regex);
 void mx_print_env(int fd);
 void mx_update_history(t_prompt *prompt);
 char *mx_str_prompt(void);
@@ -88,12 +87,10 @@ char *mx_get_output_fd(int fd);
 char *mx_check_user_file(char *tmp_name);
 bool mx_check_user(char *user_name);
 bool mx_check_trimmed_str(char *sub_trimmed, char *sub);
-char **mx_make_null_index(char **split, int index);
 int mx_unset_var(char *var);
 void mx_put_pwd(char *pwd, char *oldpwd);
 int mx_print_env_error(char option, char *err_arg, int error);
 void mx_putenv(char *var);
-void mx_oldpwd(char *newdir, t_map **map, int fd);
 void mx_pop_process(int id);
 int mx_get_process_id_by_pid(pid_t pid);
 pid_t mx_get_process_pid_by_id(int id);
@@ -239,6 +236,16 @@ void mx_de_init(void);
 
 char **mx_interpretate(char *cmnd, int *code);
 
-//
+//mx_make_null_index
+
+char **mx_make_null_index(char **split, int index);
+
+//mx_match
+
+bool mx_match(char *src, char *regex);
+
+//mx_old_pwd
+
+void mx_old_pwd(char *new_dir, t_map **map, int fd);
 
 #endif
