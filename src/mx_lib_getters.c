@@ -8,7 +8,7 @@ t_list **mx_get_list_procs(void) {
 
 t_map **mx_get_lenv(void) {
     static t_map *len_v = NULL;
-    return &lenv;
+    return &len_v;
 }
 
 struct termios *mx_get_tty(void) {
