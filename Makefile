@@ -8,47 +8,7 @@ LIBMX = libmx
 
 LBMX = libmx.a
 INC = ush.h
-SRC = check_stdin.c \
-	main.c \
-	mx_del_node_list.c \
-	mx_color.c \
-	mx_pre_interpret.c \
-	mx_get_in.c \
-    mx_export.c \
-	mx_unset.c \
-	mx_pwd.c \
-	mx_canon.c \
-	mx_match.c \
-	mx_update_history.c \
-	mx_which.c \
-	mx_str_prompt.c \
-	mx_interpretate.c \
-	mx_home.c \
-	mx_split_cmds.c \
-	mx_handle.c \
-	mx_parse.c \
-	mx_print.c \
-	mx_check_escape.c \
-	mx_replace.c \
-	mx_echo.c \
-	mx_cd.c \
-	mx_exec.c \
-	mx_process.c \
-	mx_remove_sub_char.c \
-	mx_skip.c \
-	mx_make_null_index.c \
-	mx_source.c \
-	mx_find_command.c \
-	mx_put_env.c \
-	mx_env_parse.c \
-	mx_exit.c \
-	mx_env.c \
-	mx_fg.c \
-	mx_increase_sh_lvl.c \
-	mx_init.c \
-	mx_old_pwd.c \
-	mx_built_in.c \
-	mx_change_map.c \
+SRC = *.c
 
 INCLUDE = -I $(LBMXD) \
 	-I $(INCD) \
