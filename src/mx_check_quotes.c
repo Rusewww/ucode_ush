@@ -15,8 +15,8 @@ bool mx_check_quotes(char *cmnd) {
 
     while (i < length) {
         if (!s_quotes) {
-            mx_skip_quotes(cmnd, i, MX_GRAVE_ACCENT);
-            mx_skip_expansion(cmnd, i);
+            mx_skip_quotes(cmnd, &i, MX_GRAVE_ACCENT);
+            mx_skip_expansion(cmnd, &i);
         }
         if (cmnd[i] == MX_D_QUOTES && !mx_isescape_char(cmnd, i) && !s_quotes) {
             d_quotes = !d_quotes;
