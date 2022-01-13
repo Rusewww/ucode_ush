@@ -51,7 +51,7 @@ int mx_exec_command(char **argv, int fd) {
         return exec_builtin(argv[0], argv, fd);
     } else if (mx_find_command(mx_get_var_val(SHELL, "PATH"), argv[0], &filename)) {
         extern char **environ;
-        t_process *process = mx_create_process(fd);
+        t_process *process = mx_create_proc(fd);
 
         retval = mx_exec(process, filename, argv, environ);
         mx_del_process(&process);
