@@ -10,12 +10,8 @@ LBMX = libmx.a
 INC = ush.h
 SRC = mx_ush.c \
 	main.c \
-	mx_replace_tilde_tools.c \
-	mx_replace_funcs.c \
 	mx_del_node_list.c \
 	mx_color.c \
-	mx_replace_substitution.c \
-	mx_replace_tilde.c \
 	mx_pre_interpret.c \
 	mx_get_in.c \
     mx_export.c \
@@ -33,8 +29,7 @@ SRC = mx_ush.c \
 	mx_parse.c \
 	mx_print.c \
 	mx_check_escape.c \
-	mx_replace_escape.c \
-	mx_replace_env.c \
+	mx_replace.c \
 	mx_echo.c \
 	mx_cd.c \
 	mx_exec.c \
@@ -46,7 +41,6 @@ SRC = mx_ush.c \
 	mx_find_command.c \
 	mx_put_env.c \
 	mx_env_parse.c \
-	mx_replace_sub.c \
 	mx_exit.c \
 	mx_env.c \
 	mx_fg.c \
