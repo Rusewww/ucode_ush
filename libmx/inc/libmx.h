@@ -156,7 +156,7 @@ typedef struct s_map
 {
     t_node **nodes;
     size_t size;
-}
+}              t_map;
 
 t_list *mx_create_node(void *data);
 
