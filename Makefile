@@ -39,11 +39,9 @@ SRC = mx_ush.c \
 	mx_handle_cursor.c \
 	mx_interpretate.c \
 	mx_home.c \
-	mx_flag_p_slash.c \
 	mx_split_commands.c \
 	mx_handle_command.c \
 	mx_parse_path.c \
-	mx_cd_flags.c \
 	mx_init_var_lists.c \
 	mx_print_var_list.c \
 	mx_var_list_insert.c \
@@ -94,7 +92,6 @@ SRC = mx_ush.c \
 	mx_clear_slash_end.c \
 	mx_builtin_which.c \
 	mx_unset_var.c \
-	mx_change_dir.c \
 	mx_change_map.c \
 
 INCLUDE = -I $(LBMXD) \

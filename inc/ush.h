@@ -98,8 +98,7 @@ void mx_print_var_list(t_var_list key, int fd);
 
 void mx_var_list_insert(t_var_list key, char *arg);
 
-void mx_var_list_push_front(t_list **node, t_list ***list,
-                            char **name1, char **name2);
+void mx_var_list_push_front(t_list **node, t_list ***list, char **name1, char **name2);
 
 void mx_var_list_replace_var(t_list **list, t_list *node);
 
@@ -224,10 +223,6 @@ void mx_increment_shlvl(void);
 
 int mx_unset_var(char *var);
 
-void mx_change_dir(char *newdir, t_map **map, int fd);
-
-void mx_cd_flags(char *flag, t_map **map, char *newdir);
-
 void mx_change_map(t_map **map, char *newdir);
 
 void mx_put_pwd(char *pwd, char *oldpwd);
@@ -252,10 +247,6 @@ void mx_oldpwd(char *newdir, t_map **map, int fd);
 
 void mx_home(t_map **map);
 
-void mx_flag_p_slash(char *newdir, t_map **map);
-
-void mx_flag_p_full_path(t_map **map, char *newdir);
-
 char *mx_clear_slash_end(char *str);
 
 void mx_pop_process(int id);
@@ -275,8 +266,6 @@ int mx_unset(char **args);
 int mx_export(char **args, int fd);
 
 int mx_pwd(char **flags, int fd);
-
-int mx_cd(char **args, int fd);
 
 int mx_which(char **args, int fd);
 
@@ -299,5 +288,14 @@ int mx_pre_interpret(char *c);
 //mx_getters
 
 void mx_get_in(t_prompt *prompt, int fd, int *code);
+
+//mx_cd
+
+int mx_cd(char **split, int dir);
+void mx_change_dir(char *new_dir, t_map **map, int dir);
+void mx_cd_flags(char *flag, t_map **map, char *new_dir);
+void mx_flag_p_slash(char *nd, t_map **map);
+void mx_flag_p_path(t_map **map, char *new_dir);
+
 
 #endif
