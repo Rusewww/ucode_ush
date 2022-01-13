@@ -85,7 +85,7 @@ void mx_env_vars_parse(char **argv, char **path, int *idx) {
     while (argv[*idx]) {
         if (mx_match(argv[*idx], MX_ENV_VAR)) {
             mx_get_name(argv[*idx], &name);
-            mx_putenv(argv[*idx]);
+            mx_put_env(argv[*idx]);
             if (!strcmp(name, "PATH") && (!(*path) || repl)) {
                 repl = true;
                 if (*path) {
