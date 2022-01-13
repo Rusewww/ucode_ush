@@ -1,6 +1,6 @@
 #include "../inc/ush.h"
 
-static int count_size_of_path(char **split_path) {
+static int count_size(char **split_path) {
     int size = 0;
 
     for (int i = 0; split_path[i]; i++) {
@@ -13,8 +13,8 @@ static int count_size_of_path(char **split_path) {
     return size;
 }
 
-static char *collect_path(char **split_path) {
-    int size = count_size_of_path(split_path);
+static char *collect(char **split_path) {
+    int size = count_size(split_path);
     char *path = mx_strnew(size);
     bool null_path = true;
 
@@ -35,7 +35,7 @@ static char *collect_path(char **split_path) {
     return path;
 }
 
-static char *check_path(char *path) {
+static char *check(char *path) {
     char **split_path = mx_strsplit(path, '/');
     char *result;
 
@@ -47,12 +47,12 @@ static char *check_path(char *path) {
         if (!strcmp(split_path[i], ".."))
             mx_make_null_index(split_path, i);
     }
-    result = collect_path(split_path);
+    result = collect(split_path);
     mx_del_strarr(&split_path);
     return result;
 }
 
-static char *make_bad_path(char *path, char *new_dir) {
+static char *make_bad(char *path, char *new_dir) {
     int new_dir_slash;
     int path_slash;
     char *temp;
@@ -85,13 +85,32 @@ char *mx_parse_path(char *path, char *new_dir, t_map **map) {
         return mx_get_map(map, "OLDPWD");
     }
     if (new_dir[0] == '/') {
-        tmp = check_path(new_dir);
+        tmp = check(new_dir);
         return tmp;
     }
-    tmp = make_bad_path(path, new_dir);
-    path = check_path(tmp);
+    tmp = make_bad(path, new_dir);
+    path = check(tmp);
     mx_strdel(&tmp);
     tmp = mx_strndup(path, mx_strlen(path));
     mx_strdel(&path);
     return tmp;
+}
+
+char **mx_parse_cmnd(char *cmnd, int *code) {
+    char **cmd = NULL;
+    char *cmd_trimmed = mx_strtrim(cmnd);
+    if (!strlen(cmd_trimmed)) {
+        mx_strdel(&cmd_trimmed);
+        return NULL;
+    }
+    mx_strdel(&cmd_trimmed);
+    if ((*code = mx_pre_interpret(cmnd))) {
+        return NULL;
+    }
+    cmd = mx_split_commands(cmnd);
+    if (!mx_check_colons(cmd, code)) {
+        mx_del_strarr(&cmd);
+        return NULL;
+    }
+    return cmd;
 }

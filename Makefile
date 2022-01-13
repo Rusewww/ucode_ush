@@ -31,7 +31,7 @@ SRC = mx_ush.c \
 	mx_home.c \
 	mx_split_cmds.c \
 	mx_handle.c \
-	mx_parse_path.c \
+	mx_parse.c \
 	mx_print_var_list.c \
 	mx_check_escape.c \
 	mx_replace_escape.c \
@@ -42,7 +42,6 @@ SRC = mx_ush.c \
 	mx_process.c \
 	mx_remove_subchar.c \
 	mx_skip.c \
-	mx_parse_command.c \
 	mx_make_null_index.c \
 	mx_source.c \
 	mx_put_pwd.c \

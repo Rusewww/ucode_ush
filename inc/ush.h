@@ -70,7 +70,6 @@ char *mx_replace_special(char *argument);
 char *mx_replace_escape(char *arg, char *escape, char new, bool in_q);
 char *mx_replace_env(char *arg, int *code);
 bool mx_remove_subchar(char *substitution);
-char **mx_parse_command(char *command, int *code);
 char *mx_replace_tilde(char *arg);
 bool mx_find_command(char *path, char *command, char **filename);
 char *mx_replace_substitution(char *arg, int *code);
@@ -99,7 +98,6 @@ int mx_pwd(char **flags, int fd);
 int mx_which(char **args, int fd);
 char **mx_source(char *str);
 
-char *mx_parse_path(char *path, char *new_dir, t_map **map);
 
 //mx_pre_interpret
 
@@ -247,5 +245,11 @@ bool mx_match(char *src, char *regex);
 //mx_old_pwd
 
 void mx_old_pwd(char *new_dir, t_map **map, int fd);
+
+//mx_parse
+
+char **mx_parse_cmnd(char *cmnd, int *code);
+char *mx_parse_path(char *path, char *new_dir, t_map **map);
+
 
 #endif
