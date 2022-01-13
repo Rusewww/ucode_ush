@@ -46,7 +46,7 @@ static void get_parameter_sub(int *o_sub, int *c_sub, unsigned int *i, char *arg
 static char *get_substitution(int *o_sub, int *c_sub, unsigned int *i, char *arg) {
     if (arg[*i] == MX_GRAVE_ACCENT && !mx_is_escape_char(arg, *i)) {
         get_quoted_sub(o_sub, c_sub, i, arg);
-    } else if (arg[*i] == '$' && !mx_isescape_char(arg, *i)) {
+    } else if (arg[*i] == '$' && !mx_is_escape_char(arg, *i)) {
         get_parameter_sub(o_sub, c_sub, i, arg);
     }
     if (*o_sub != -1 && *c_sub != -1) {
