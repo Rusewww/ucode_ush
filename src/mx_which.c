@@ -34,7 +34,7 @@ static bool check_dir(char *path, char *file) {
 
 static bool search_exe(char *file, int *mode, int fd) {
     char **paths = mx_strsplit(mx_get_var_val(SHELL, "PATH"), ':');
-    bool retval = mx_builtin_which(file, mode);
+    bool retval = mx_built_in(file, mode);
     if (paths) {
         int i = 0;
         while (paths[i]) {
