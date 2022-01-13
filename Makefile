@@ -31,7 +31,6 @@ SRC = mx_ush.c \
 	mx_update_history.c \
 	mx_print_env.c \
 	mx_is_flag_stop.c \
-	mx_rcmd.c \
 	mx_which.c \
 	mx_str_prompt.c \
 	mx_handle_cursor.c \
@@ -61,7 +60,6 @@ SRC = mx_ush.c \
 	mx_put_pwd.c \
 	mx_env_copy.c \
 	mx_exec_command.c \
-	mx_is_builtin.c \
 	mx_find_command.c \
 	mx_del_process.c \
 	mx_putenv.c \
@@ -80,7 +78,7 @@ SRC = mx_ush.c \
 	mx_exec_copy_argv.c \
 	mx_oldpwd.c \
 	mx_clear_slash_end.c \
-	mx_builtin_which.c \
+	mx_built_in.c \
 	mx_unset_var.c \
 	mx_change_map.c \
 

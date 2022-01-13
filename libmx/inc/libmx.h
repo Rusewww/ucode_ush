@@ -160,4 +160,6 @@ void mx_var_list_insert(t_var_list key, char *arg);
 
 void mx_var_list_delete(t_var_list key, char *del_n);
 
+void mx_rcmd(char *dst, char *src, size_t size, unsigned int *index);
+
 #endif

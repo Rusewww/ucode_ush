@@ -69,7 +69,6 @@ bool mx_is_flag_stop(char *flag);
 void mx_handle_print_char(t_prompt *prompt);
 bool mx_handle_history(t_prompt *prompt);
 void mx_update_history(t_prompt *prompt);
-void mx_rcmd(char *dst, char *src, size_t size, unsigned int *index);
 char *mx_str_prompt(void);
 void mx_handle_cursor(t_prompt *prompt);
 char **mx_interpretate(char *command, int *code);
@@ -120,8 +119,6 @@ void mx_init_map_vars(void);
 void mx_init_signals(void);
 void mx_deinit(void);
 char **mx_make_null_index(char **split, int index);
-bool mx_is_builtin(char *command);
-bool mx_builtin_which(char *file, int *mode);
 void mx_increment_shlvl(void);
 int mx_unset_var(char *var);
 void mx_change_map(t_map **map, char *newdir);
@@ -187,5 +184,8 @@ void mx_skip_quotes_if(bool *quote, char *arg, unsigned int *i);
 t_list *mx_split_cmd(char *command);
 char **mx_split_commands(char *command);
 
+//mx_built_in
+
+bool mx_built_in(char *file, int *mode);
 
 #endif

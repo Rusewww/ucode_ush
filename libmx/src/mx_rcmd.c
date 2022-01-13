@@ -1,4 +1,4 @@
-#include "../inc/ush.h"
+#include "../inc/libmx.h"
 
 void mx_rcmd(char *dst, char *src, size_t size, unsigned int *index) {
     memset(dst, '\0', size);
