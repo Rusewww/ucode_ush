@@ -15,7 +15,7 @@ bool mx_check_quotes(char *c) {
         }
         if (c[i] == MX_S_QUOTES && !d_quotes) {
             if (!s_quotes) {
-                if (!mx_isescape_char(c, i)) {
+                if (!mx_is_escape_char(c, i)) {
                     s_quotes = !s_quotes;
                 }
             } else if (s_quotes) {
