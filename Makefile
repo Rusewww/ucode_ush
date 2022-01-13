@@ -44,7 +44,6 @@ SRC = mx_ush.c \
 	mx_home.c \
 	mx_flag_p_slash.c \
 	mx_split_commands.c \
-	mx_preinterpretate.c \
 	mx_handle_command.c \
 	mx_parse_path.c \
 	mx_cd_flags.c \
