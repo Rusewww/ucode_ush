@@ -56,11 +56,6 @@
 #define MX_WAIT_TO_INT(m) (*(int *) & (m))
 #define MX_WEXITSTATUS(x) ((MX_WAIT_TO_INT(x) >> 8) & 0x000000ff)
 
-typedef enum e_var_list {
-    SHELL,
-    EXP
-} t_var_list;
-
 typedef struct s_process {
     int fd;
     int pos;

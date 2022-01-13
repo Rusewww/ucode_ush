@@ -39,6 +39,11 @@ typedef struct s_map
     size_t size;
 }              t_map;
 
+typedef enum e_var_list {
+    SHELL,
+    EXP
+} t_var_list;
+
 t_list *mx_sort_list(t_list *lst, bool (*cmp)(void *, void *));
 int mx_list_size(t_list *list);
 t_list  *mx_create_node(void *data);
