@@ -23,18 +23,15 @@ SRC = mx_ush.c \
 	mx_pwd.c \
 	mx_canon.c \
 	mx_match.c \
-	mx_handle_print_char.c \
-	mx_handle_history.c \
 	mx_update_history.c \
 	mx_print_env.c \
 	mx_is_flag_stop.c \
 	mx_which.c \
 	mx_str_prompt.c \
-	mx_handle_cursor.c \
 	mx_interpretate.c \
 	mx_home.c \
 	mx_split_cmds.c \
-	mx_handle_command.c \
+	mx_handle.c \
 	mx_parse_path.c \
 	mx_init_var_lists.c \
 	mx_print_var_list.c \
@@ -47,7 +44,6 @@ SRC = mx_ush.c \
 	mx_issubstitution.c \
 	mx_exec.c \
 	mx_process.c \
-	mx_handle_substitution.c \
 	mx_remove_subchar.c \
 	mx_skip.c \
 	mx_parse_command.c \

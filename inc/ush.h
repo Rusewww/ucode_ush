@@ -64,21 +64,16 @@ typedef struct s_prompt {
 bool mx_match(char *src, char *regex);
 void mx_print_env(int fd);
 bool mx_is_flag_stop(char *flag);
-void mx_handle_print_char(t_prompt *prompt);
-bool mx_handle_history(t_prompt *prompt);
 void mx_update_history(t_prompt *prompt);
 char *mx_str_prompt(void);
-void mx_handle_cursor(t_prompt *prompt);
 char **mx_interpretate(char *command, int *code);
 void mx_print_sh_error(char *process, char *message);
-void mx_handle_command(char *command, int *code);
 void mx_print_var_list(t_var_list key, int fd);
 bool mx_isescape_char(char *command, int i);
 char *mx_replace_special(char *argument);
 char *mx_replace_escape(char *arg, char *escape, char new, bool in_q);
 char *mx_replace_env(char *arg, int *code);
 bool mx_issubstitution(char *arg);
-t_list *mx_handle_substitution(t_list *arguments);
 bool mx_remove_subchar(char *substitution);
 char **mx_parse_command(char *command, int *code);
 char *mx_replace_tilde(char *arg);
@@ -117,7 +112,6 @@ int mx_unset(char **args);
 int mx_pwd(char **flags, int fd);
 int mx_which(char **args, int fd);
 char **mx_source(char *str);
-int mx_fg(char **args, int fd);
 
 char *mx_parse_path(char *path, char *new_dir, t_map **map);
 
@@ -228,6 +222,13 @@ int mx_export(char **args, int fd);
 
 int mx_fg(char **args, int fd);
 
+//mx_handle
+
+void mx_handle_cmnd(char *cmnd, int *code);
+void mx_handle_cursor(t_prompt *prompt);
+bool mx_handle_his(t_prompt *prompt);
+void mx_handle_print_char(t_prompt *prompt);
+t_list *mx_handle_subs(t_list *arg);
 
 
 #endif
