@@ -21,7 +21,7 @@ static bool handle(t_prompt *prompt, int fd, int *code) {
     mx_backspace(prompt->index + strlen(mx_str_prompt()), fd);
     dprintf(fd, "%s%s", mx_str_prompt(), prompt->command);
     mx_backspace(prompt->index + strlen(mx_str_prompt()), fd);
-    if (!mx_handle_history(prompt)) {
+    if (!mx_handle_his(prompt)) {
         mx_handle_print_char(prompt);
         strcpy(prompt->tmp_command, prompt->command);
     }
