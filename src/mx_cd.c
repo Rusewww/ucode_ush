@@ -147,7 +147,7 @@ void mx_change_dir(char *new_dir, t_map **map, int dir) {
         mx_home(map);
         return;
     } else if (!strcmp(new_dir, "~OLDPWD")) {
-        mx_oldpwd(new_dir, map, dir);
+        mx_old_pwd(new_dir, map, dir);
         return;
     }
     res = chdir(new_dir);
