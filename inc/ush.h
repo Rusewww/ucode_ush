@@ -67,7 +67,6 @@ void mx_update_history(t_prompt *prompt);
 char *mx_str_prompt(void);
 void mx_print_sh_error(char *process, char *message);
 void mx_print_var_list(t_var_list key, int fd);
-bool mx_isescape_char(char *command, int i);
 char *mx_replace_special(char *argument);
 char *mx_replace_escape(char *arg, char *escape, char new, bool in_q);
 char *mx_replace_env(char *arg, int *code);
