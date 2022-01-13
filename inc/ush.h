@@ -205,8 +205,6 @@ bool mx_get_sub(char *arg, char *sub, int *code);
 
 t_process *mx_get_process_by_id(int id);
 
-bool mx_check_chars(char *command);
-
 void mx_del_node_list(t_list **list, t_process **process);
 
 void mx_enable_signals(t_process *process);
@@ -339,5 +337,6 @@ bool mx_check_dir_exists(char *dir);
 
 
 bool mx_check_parentheses(char *c);
+bool mx_check_char(char *c);
 
 #endif

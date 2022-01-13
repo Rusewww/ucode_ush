@@ -21,3 +21,21 @@ bool mx_check_parentheses(char *c) {
     return up == -1;
 }
 
+bool mx_check_char(char *c) {
+    unsigned int i = 0;
+    while (i < strlen(c)) {
+        mx_skip_quotes(c, &i, MX_D_QUOTES);
+        mx_skip_quotes(c, &i, MX_S_QUOTES);
+        unsigned int j = 0;
+        while (j < strlen(MX_FORBIDDEN_CHARS)) {
+            if (c[i] == MX_FORBIDDEN_CHARS[j]
+                && !mx_isescape_char(c, i)) {
+                return false;
+            }
+            j++;
+        }
+        i++;
+    }
+    return true;
+}
+

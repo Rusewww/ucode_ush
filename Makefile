@@ -16,7 +16,6 @@ SRC = mx_ush.c \
 	mx_continue_process.c \
 	mx_del_node_list.c \
 	mx_color.c \
-	mx_check_chars.c \
 	mx_replace_substitution.c \
 	mx_split_command.c \
 	mx_replace_tilde.c \
