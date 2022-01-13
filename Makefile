@@ -24,7 +24,6 @@ SRC = mx_ush.c \
     mx_export.c \
 	mx_unset.c \
 	mx_pwd.c \
-	mx_get_tty.c \
 	mx_enable_canon.c \
 	mx_disable_canon.c \
 	mx_match.c \
@@ -35,7 +34,7 @@ SRC = mx_ush.c \
 	mx_print_env.c \
 	mx_is_flag_stop.c \
 	mx_rcmd.c \
-	mx_get_lenv.c \
+	mx_lib_getters.c \
 	mx_which.c \
 	mx_str_prompt.c \
 	mx_handle_cursor.c \
@@ -46,12 +45,10 @@ SRC = mx_ush.c \
 	mx_handle_command.c \
 	mx_parse_path.c \
 	mx_cd_flags.c \
-	mx_get_var_list.c \
 	mx_init_var_lists.c \
 	mx_print_var_list.c \
 	mx_var_list_insert.c \
 	mx_get_var_info.c \
-	mx_get_var_val.c \
 	mx_check_escape.c \
 	mx_isescape_char.c \
 	mx_replace_escape.c \
@@ -85,7 +82,6 @@ SRC = mx_ush.c \
 	mx_print_env_error.c \
 	mx_env_parse_vars.c \
 	mx_env_parse_flags.c \
-	mx_get_list_procs.c \
 	mx_replace_sub.c \
 	mx_exit.c \
 	mx_env.c \

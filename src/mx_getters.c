@@ -42,3 +42,5 @@ void mx_get_in(t_prompt *prompt, int fd, int *code) {
     }
     mx_update_history(prompt);
 }
+
+
