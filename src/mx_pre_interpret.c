@@ -10,7 +10,7 @@ bool mx_check_quotes(char *c) {
             mx_skip_quotes(c, &i, MX_GRAVE_ACCENT);
             mx_skip_exp(c, &i);
         }
-        if (c[i] == MX_D_QUOTES && !mx_isescape_char(c, i) && !s_quotes) {
+        if (c[i] == MX_D_QUOTES && !mx_is_escape_char(c, i) && !s_quotes) {
             d_quotes = !d_quotes;
         }
         if (c[i] == MX_S_QUOTES && !d_quotes) {
@@ -34,8 +34,8 @@ bool mx_check_parentheses(char *c) {
     unsigned int i = 0;
     while (i < length) {
         mx_skip_quotes(c, &i, MX_GRAVE_ACCENT);
-        if ((c[i] == '(' && !mx_isescape_char(c, i)) || (c[i] == '{' && !mx_isescape_char(c, i)) ||
-            (c[i] == ')' && !mx_isescape_char(c, i)) || (c[i] == '}' && !mx_isescape_char(c, i))) {
+        if ((c[i] == '(' && !mx_is_escape_char(c, i)) || (c[i] == '{' && !mx_is_escape_char(c, i)) ||
+            (c[i] == ')' && !mx_is_escape_char(c, i)) || (c[i] == '}' && !mx_is_escape_char(c, i))) {
             up++;
             stack[up] = c[i];
         }
@@ -56,7 +56,7 @@ bool mx_check_char(char *c) {
         unsigned int j = 0;
         while (j < strlen(MX_FORBIDDEN_CHARS)) {
             if (c[i] == MX_FORBIDDEN_CHARS[j]
-                && !mx_isescape_char(c, i)) {
+                && !mx_is_escape_char(c, i)) {
                 return false;
             }
             j++;
@@ -73,7 +73,7 @@ bool mx_check_substitutions(char *c) {
     while (i < length) {
         mx_skip_quotes(c, &i, MX_S_QUOTES);
         mx_skip_exp(c, &i);
-        if (c[i] == MX_GRAVE_ACCENT && !mx_isescape_char(c, i)) {
+        if (c[i] == MX_GRAVE_ACCENT && !mx_is_escape_char(c, i)) {
             g_quotes = !g_quotes;
         }
         i++;
