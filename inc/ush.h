@@ -85,8 +85,6 @@ typedef struct s_prompt {
     char tmp_command[ARG_MAX + 1];
 } t_prompt;
 
-struct termios *mx_get_tty(void);
-
 void mx_enable_canon(void);
 
 void mx_disable_canon(void);
@@ -107,8 +105,6 @@ void mx_update_history(t_prompt *prompt);
 
 void mx_rcmd(char *dst, char *src, size_t size, unsigned int *index);
 
-t_map **mx_get_lenv(void);
-
 char *mx_str_prompt(void);
 
 void mx_handle_cursor(t_prompt *prompt);
@@ -121,8 +117,6 @@ void mx_print_sh_error(char *process, char *message);
 
 void mx_handle_command(char *command, int *code);
 
-t_list **mx_get_var_list(t_var_list key);
-
 void mx_print_var_list(t_var_list key, int fd);
 
 void mx_var_list_insert(t_var_list key, char *arg);
@@ -132,12 +126,7 @@ void mx_var_list_push_front(t_list **node, t_list ***list,
 
 void mx_var_list_replace_var(t_list **list, t_list *node);
 
-void mx_var_list_push_mid(t_list **list, t_list **node,
-                          char *arg_name, char **var_name);
-
-char *mx_get_var_info(char *arg, bool info_type);
-
-char *mx_get_var_val(t_var_list key, char *var);
+void mx_var_list_push_mid(t_list **list, t_list **node, char *arg_name, char **var_name);
 
 bool mx_check_escape(char *command);
 
@@ -152,8 +141,6 @@ bool in_q
 );
 
 char *mx_replace_env(char *arg, int *code);
-
-void mx_get_name(char *var, char **name);
 
 void mx_delete_names(char **name1, char **name2, t_list *node);
 
@@ -293,8 +280,6 @@ void mx_flag_p_slash(char *newdir, t_map **map);
 void mx_flag_p_full_path(t_map **map, char *newdir);
 
 char *mx_clear_slash_end(char *str);
-
-t_list **mx_get_list_procs(void);
 
 void mx_pop_process(int id);
 

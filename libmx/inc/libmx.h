@@ -112,4 +112,12 @@ void mx_printchar(char c);
 void mx_print_strarr(char **arr, const char *delim);
 bool mx_isalpha(const char c);
 
+void mx_get_name(char *var, char **name);
+char *mx_get_var_info(char *arg, bool type);
+char *mx_get_var_val(t_var_list key, char *var);
+t_list **mx_get_var_list(t_var_list key);
+struct termios *mx_get_tty(void);
+t_map **mx_get_lenv(void);
+t_list **mx_get_list_procs(void);
+
 #endif

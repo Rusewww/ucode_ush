@@ -1,4 +1,4 @@
-#include "../inc/ush.h"
+#include "../../inc/libmx.h"
 
 t_list **mx_get_list_procs(void) {
     static t_list *list = NULL;
