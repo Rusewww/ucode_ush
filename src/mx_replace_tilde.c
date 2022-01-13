@@ -71,7 +71,7 @@ char *mx_replace_tilde(char *arg) {
     while (mx_get_char_index(&arg[i_s[0]], '~') >= 0) {
         mx_skip_exps_quotes(arg, &i_s[0], &is_quotes);
         if ((arg[i_s[0]] == '~' && !mx_is_escape_char(arg, i_s[0])) &&
-            ((i_s[0] > 0 && isspace(arg[i_s[0] - 1]) && !mx_isescape_char(arg, i_s[0] - 1)) || (i_s[0] == 0))) {
+            ((i_s[0] > 0 && isspace(arg[i_s[0] - 1]) && !mx_is_escape_char(arg, i_s[0] - 1)) || (i_s[0] == 0))) {
             add_sub(res, arg, i_s);
         }
         i_s[0]++;
