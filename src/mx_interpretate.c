@@ -36,7 +36,7 @@ static char *get_format_arg(char *str) {
             is_quotes[1] = !is_quotes[1];
             continue;
         }
-        if (mx_isescape_char(str, i + 1) && !is_quotes[0] && !is_quotes[1])
+        if (mx_is_escape_char(str, i + 1) && !is_quotes[0] && !is_quotes[1])
             i++;
         result[index++] = str[i];
     }
