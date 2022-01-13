@@ -42,7 +42,7 @@ static t_list *get_process(char *arg) {
     t_list **proc = mx_get_list_procs();
 
     if (!arg)
-        return mx_get_last_process(*proc);
+        return mx_get_last_proc(*proc);
     arg++;
     lenght = strlen(arg);
     for (unsigned int i = 0; i < lenght; i++) {
@@ -86,7 +86,7 @@ int mx_fg(char **args, int fd) {
         process_F_to_pay_respect = (t_process *) process->data;
         mx_disable_canon();
         tcsetpgrp(STDIN_FILENO, process_F_to_pay_respect->gpid);
-        mx_continue_process(process_F_to_pay_respect, all, fd);
+        mx_continue_proc(process_F_to_pay_respect, all, fd);
         tcsetpgrp(STDIN_FILENO, getpgrp());
         mx_enable_canon();
     } else {
