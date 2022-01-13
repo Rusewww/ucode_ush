@@ -86,8 +86,8 @@ int mx_env(char **argv, int fd) {
     int rval = 0;
     int i = 0;
 
-    if (!(rval = mx_env_parse_flags(argv, &path, &i))) {
-        mx_env_parse_vars(argv, &path, &i);
+    if (!(rval = mx_env_flags_parse(argv, &path, &i))) {
+        mx_env_vars_parse(argv, &path, &i);
         if (argv[i] == NULL) {
             mx_print_env(fd);
         } else if (mx_find_command(path, argv[i], &name)) {
